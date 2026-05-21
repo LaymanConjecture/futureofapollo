@@ -46,6 +46,9 @@ a:hover{border-bottom-color:var(--accent)}
 .tab.featured{color:var(--accent);font-weight:600}
 .tab.featured::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle;transform:translateY(-1px)}
 .tab.featured.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab.featured-amber{color:var(--amber);font-weight:600;background:rgba(180,83,9,.08);padding:14px 10px;border-radius:6px 6px 0 0;box-shadow:inset 0 1px 0 rgba(180,83,9,.18),inset 0 -1px 0 rgba(180,83,9,.18)}
+.tab.featured-amber::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--amber);margin-right:6px;vertical-align:middle;transform:translateY(-1px)}
+.tab.featured-amber.active{color:var(--amber);border-bottom-color:var(--amber)}
 .future-section{background:rgba(79,121,66,.05);border:1px solid rgba(79,121,66,.22);border-radius:12px;padding:26px 28px;margin:28px 0 8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
 .future-section .section-head{color:var(--accent);border-bottom-color:rgba(79,121,66,.22);margin:24px 0 14px}
 .future-section .section-head:first-of-type{margin-top:0}
@@ -235,7 +238,7 @@ a:hover{border-bottom-color:var(--accent)}
     <div class="tab" data-tab="engines" onclick="showTab('engines')">Forecast Layers</div>
     <div class="tab" data-tab="platforms" onclick="showTab('platforms')">Data Wedges</div>
     <div class="tab" data-tab="cases" onclick="showTab('cases')">Pilot Workflows</div>
-    <div class="tab" data-tab="risk" onclick="showTab('risk')">Risk OS</div>
+    <div class="tab featured-amber" data-tab="risk" onclick="showTab('risk')">Risk OS</div>
     <div class="tab" data-tab="ai" onclick="showTab('ai')">Controls</div>
     <div class="tab" data-tab="nextsteps" onclick="showTab('nextsteps')">Pilot Next Steps</div>
     <div class="tab" data-tab="sources" onclick="showTab('sources')">Appendix</div>
