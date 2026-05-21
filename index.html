@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Future of Apollo Credit Intelligence - Axion - Eternis</title>
+<meta name="theme-color" content="#F5F2ED">
+<meta name="description" content="A strategic roadmap for Apollo: an always-on private-credit intelligence system, posttraining flywheel, and long-run liquidity layer.">
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f2ed;--surface:#ffffff;--surface-2:#f0ede8;--surface-3:#fafaf9;
+  --text:#1c1917;--dim:#78716c;--dimmer:#a8a29e;--faint:#d6d3d1;
+  --border:#e7e5e4;--border-dim:#f0eeec;
+  --accent:#4f7942;--accent-glow:rgba(79,121,66,0.08);
+  --green:#4f7942;--amber:#b45309;--red:#dc2626;--cyan:#0891b2;--purple:#7c3aed;--navy:#1e3a5f;
+  --font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Roboto,sans-serif;
+  --mono:'SF Mono','Fira Code','JetBrains Mono',monospace;
+  --c1:#4f7942;--c2:#1e3a5f;--c3:#b45309;--c4:#0891b2;--c5:#7c3aed;--c6:#a3553c;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;border-bottom:1px dashed rgba(79,121,66,.35)}
+a:hover{border-bottom-style:solid}
+code{font-family:var(--mono);font-size:11px;background:var(--surface-3);border:1px solid var(--border-dim);padding:1px 5px;border-radius:4px}
+
+.brand-bar{max-width:1400px;margin:0 auto;padding:28px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;border-bottom:none}
+.brand-mark{width:26px;height:26px;border:1px solid rgba(79,121,66,.35);border-radius:7px;display:grid;place-items:center;color:var(--accent);font-family:var(--mono);font-weight:700;font-size:13px;background:rgba(79,121,66,.06)}
+.brand-name{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.brand-right{font-size:10px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dimmer);text-align:right}
+.atlas-header{max-width:1400px;margin:0 auto;padding:30px 40px 0}
+.atlas-brand{font-size:11px;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--dimmer);margin-bottom:4px}
+.atlas-title{font-size:11px;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--text);margin-bottom:2px}
+.atlas-headline{font-size:31px;font-weight:400;letter-spacing:-.02em;margin-top:14px;max-width:940px;line-height:1.22;color:var(--text)}
+.atlas-subtitle{font-size:12.5px;color:var(--dim);margin-top:13px;max-width:820px;line-height:1.75}
+.atlas-method{font-size:12px;color:var(--dim);margin-top:24px;max-width:880px;line-height:1.7;padding:14px 18px;background:rgba(79,121,66,.04);border-left:2px solid var(--accent);border-radius:4px}
+.atlas-method strong{color:var(--text);font-weight:600}
+
+.stats{display:flex;gap:48px;margin:32px 0 30px;flex-wrap:wrap}
+.stat-num{font-size:32px;font-weight:300;letter-spacing:-.02em;color:var(--text);line-height:1}
+.stat-num .unit{font-size:16px;color:var(--dim);font-weight:400}
+.stat-lbl{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dimmer);margin-top:5px;max-width:140px;line-height:1.35}
+
+.tab-nav-wrap{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border)}
+.tab-nav{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;gap:30px;flex-wrap:wrap}
+.tab{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--dimmer);padding:14px 0;border-bottom:2px solid transparent;cursor:pointer;transition:color .2s;user-select:none}
+.tab:hover{color:var(--dim)}
+.tab.active{color:var(--text);border-bottom-color:var(--text)}
+.pane{display:none}
+.pane.active{display:block}
+.container{max-width:1400px;margin:0 auto;padding:34px 40px 84px}
+.overview-lede{font-size:16px;color:var(--text);line-height:1.65;max-width:900px;margin-bottom:34px;font-weight:400}
+.overview-lede strong{font-weight:500;color:var(--text)}
+.section-head{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dimmer);margin:42px 0 16px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.section-head:first-child{margin-top:0}
+
+.emboss{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:26px 30px;margin:12px 0;position:relative;box-shadow:inset 0 2px 4px rgba(0,0,0,.03),inset 0 -1px 0 rgba(255,255,255,.7),0 1px 3px rgba(0,0,0,.04)}
+.emboss-accent{border-left:3px solid var(--accent);background:linear-gradient(135deg,var(--surface) 0%,#fafaf7 100%)}
+.emboss-amber{border-left:3px solid var(--amber);background:linear-gradient(135deg,var(--surface) 0%,#faf8f2 100%)}
+.emboss-navy{border-left:3px solid var(--navy);background:linear-gradient(135deg,var(--surface) 0%,#f8fafc 100%)}
+.e-kicker{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.emboss-amber .e-kicker{color:var(--amber)}
+.emboss-navy .e-kicker{color:var(--navy)}
+.e-headline{font-size:15.5px;font-weight:500;color:var(--text);line-height:1.4;margin-bottom:8px;letter-spacing:-.01em}
+.e-body{font-size:12.5px;color:var(--dim);line-height:1.7}
+.e-body strong{color:var(--text);font-weight:600}
+.e-stat{font-size:28px;font-weight:300;letter-spacing:-.02em;color:var(--text);line-height:1;margin-bottom:5px}
+.e-label{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dimmer);margin-bottom:10px}
+.emboss-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+.emboss-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0}
+.emboss-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:16px 0}
+.pull-quote{font-size:18px;font-weight:400;color:var(--text);line-height:1.5;letter-spacing:-.01em;margin:26px 0;padding:0 0 0 20px;border-left:2px solid var(--accent);max-width:860px}
+.pull-quote em{font-style:normal;color:var(--accent);font-weight:500}
+
+.surface-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.surface-node{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 18px;min-height:148px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.surface-node:nth-child(1){border-top:3px solid var(--c1)}
+.surface-node:nth-child(2){border-top:3px solid var(--c2)}
+.surface-node:nth-child(3){border-top:3px solid var(--c3)}
+.surface-node:nth-child(4){border-top:3px solid var(--c4)}
+.surface-index{font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:.12em;text-transform:uppercase}
+.surface-title{font-size:14px;font-weight:600;line-height:1.35;margin:8px 0;color:var(--text)}
+.surface-copy{font-size:11.5px;color:var(--dim);line-height:1.55}
+.formula{font-family:var(--mono);font-size:12px;line-height:1.85;color:var(--text);background:var(--surface-3);border:1px solid var(--border);border-radius:8px;padding:18px 20px;max-width:920px;overflow-x:auto;white-space:pre}
+
+.data-table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.data-table th{text-align:left;padding:12px 14px;color:var(--dimmer);font-weight:500;font-size:9px;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid var(--border);background:var(--surface-3)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border-dim);vertical-align:top;font-size:12px;color:var(--dim);line-height:1.55}
+.data-table tr:last-child td{border-bottom:none}
+.data-table td:first-child{font-family:var(--mono);font-size:11px;color:var(--accent);font-weight:600;white-space:nowrap}
+.data-table strong{color:var(--text);font-weight:600}
+
+.phase-list{list-style:none;padding:0;margin:12px 0;max-width:980px}
+.phase-list li{padding:18px 0;border-top:1px solid var(--border-dim);display:grid;grid-template-columns:90px 1fr 148px;gap:20px;align-items:baseline}
+.phase-list li:first-child{border-top:none}
+.ph-num{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.ph-title{font-weight:600;color:var(--text);display:block;margin-bottom:6px}
+.ph-detail{color:var(--dim);font-size:12.5px;line-height:1.65}
+.ph-deliv{display:block;margin-top:8px;font-size:11.5px;color:var(--accent);font-family:var(--mono);letter-spacing:.02em}
+.ph-tag{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:right}
+
+.chip-row{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 2px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;border-radius:9999px;background:var(--surface-3);border:1px solid var(--border);font-size:10.5px;color:var(--dim);font-family:var(--mono);line-height:1.2}
+.chip .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+.axis-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:18px;align-items:stretch;margin:16px 0}
+.ladder{display:grid;grid-template-columns:1fr;gap:12px}
+.ladder-step{display:grid;grid-template-columns:82px 1fr;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px}
+.ladder-step .step-id{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding-top:3px}
+.ladder-step h4{font-size:14px;font-weight:600;color:var(--text);line-height:1.35;margin-bottom:5px}
+.ladder-step p{font-size:12px;color:var(--dim);line-height:1.6}
+
+.graph-layout{display:grid;grid-template-columns:1fr 390px;height:calc(100vh - 60px);min-height:660px;gap:0;width:100%;max-width:1400px;margin:0 auto}
+.graph-panel{background:var(--bg);position:relative;overflow:hidden;border-right:1px solid var(--border)}
+#graphSvg{width:100%;height:100%;display:block;cursor:grab}
+#graphSvg:active{cursor:grabbing}
+.node{stroke:var(--surface);stroke-width:1.6;cursor:pointer}
+.node.selected{stroke:var(--text);stroke-width:2.6}
+.edge{stroke-opacity:.45}
+.edge.pos{stroke:var(--accent)}
+.edge.neg{stroke:var(--red);stroke-dasharray:4 4}
+.edge.highlight{stroke-opacity:.95;stroke-width:2.4}
+.node-label{fill:var(--dim);font-size:9px;font-family:var(--mono);pointer-events:none;user-select:none}
+.graph-controls{position:absolute;top:16px;left:16px;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);padding:14px 16px;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.04);max-width:320px;font-size:11px}
+.graph-controls h4{font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--dimmer);margin-bottom:8px}
+.graph-controls p{font-size:11px;color:var(--dim);line-height:1.55}
+.graph-legend{position:absolute;bottom:16px;left:16px;background:rgba(255,255,255,.96);padding:10px 14px;border-radius:10px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.04);font-size:10.5px;color:var(--dim)}
+.graph-legend .line{display:flex;align-items:center;gap:6px;margin:2px 0}
+.graph-legend .swatch{display:inline-block;width:22px;height:2px}
+.detail-panel{background:var(--surface-3);overflow-y:auto;padding:28px}
+.detail-empty{color:var(--dimmer);font-size:12px;font-style:italic;padding-top:70px;text-align:center;line-height:1.7}
+.detail-kicker{font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--dimmer);margin-bottom:8px}
+.detail-id{font-family:var(--mono);color:var(--accent);font-size:13px;font-weight:700;margin-bottom:8px}
+.detail-title{font-size:16px;color:var(--text);line-height:1.45;margin-bottom:12px;font-weight:600;letter-spacing:-.005em}
+.detail-copy{font-size:12px;color:var(--dim);line-height:1.7;margin-bottom:16px}
+.detail-meta{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:11px;color:var(--dim);border-top:1px solid var(--border);padding-top:14px}
+.detail-meta .k{color:var(--dimmer);letter-spacing:.05em;font-size:10px;text-transform:uppercase;font-weight:500}
+.detail-meta .v{color:var(--text)}
+
+.question-list{list-style:none;padding:0;margin:0;max-width:940px}
+.question-list li{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--border-dim)}
+.question-list li:first-child{border-top:none}
+.question-list .q-k{font-family:var(--mono);font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.question-list .q-v{font-size:13px;color:var(--text);line-height:1.6}
+
+.source-note{font-size:10.5px;color:var(--dimmer);line-height:1.7;max-width:920px;margin-top:24px}
+.atlas-footer{max-width:1400px;margin:0 auto;padding:48px 40px 40px;font-size:10px;color:var(--dimmer);line-height:1.7;border-top:1px solid var(--border)}
+
+@media(max-width:980px){
+  .emboss-grid-2,.emboss-grid-3,.emboss-grid-4,.surface-flow,.axis-grid{grid-template-columns:1fr}
+  .graph-layout{grid-template-columns:1fr;height:auto;min-height:0}
+  .graph-panel{height:620px;border-right:none;border-bottom:1px solid var(--border)}
+  .phase-list li,.question-list li{grid-template-columns:1fr}
+  .ph-tag{text-align:left}
+}
+@media(max-width:720px){
+  .brand-bar,.atlas-header,.tab-nav,.container,.atlas-footer{padding-left:20px;padding-right:20px}
+  .atlas-headline{font-size:25px}
+  .stats{gap:24px}
+  .stat-num{font-size:27px}
+  .tab-nav{gap:22px;overflow-x:auto;flex-wrap:nowrap}
+  .emboss{padding:21px 20px}
+  .surface-node{min-height:auto}
+  .graph-panel{height:540px}
+}
+</style>
+</head>
+<body>
+<div class="brand-bar">
+  <a class="brand" href="https://axion.eternis.ai" target="_blank" rel="noopener">
+    <span class="brand-mark">A</span>
+    <span class="brand-name">Axion</span>
+  </a>
+  <div class="brand-right">Eternis Research &middot; Apollo Roadmap</div>
+</div>
+
+<header class="atlas-header">
+  <div class="atlas-brand">Future of Apollo &middot; Private Credit Intelligence</div>
+  <h1 class="atlas-headline">A roadmap for making Apollo the first machine-native private-credit originator.</h1>
+  <p class="atlas-subtitle">The proposal is not a chatbot layer. It is an always-on credit intelligence system: every loan, borrower, sponsor, covenant, sector, manager question, and liquidity channel becomes part of a continuously updated belief graph.</p>
+
+  <div class="stats">
+    <div><div class="stat-num">$1.03<span class="unit">T</span></div><div class="stat-lbl">Apollo total AUM, Q1 2026</div></div>
+    <div><div class="stat-num">$834<span class="unit">B</span></div><div class="stat-lbl">Credit AUM, Mar. 31 2026</div></div>
+    <div><div class="stat-num">$324<span class="unit">B</span></div><div class="stat-lbl">LTM origination, Q1 2026</div></div>
+    <div><div class="stat-num">16</div><div class="stat-lbl">Origination platforms</div></div>
+  </div>
+
+  <p class="atlas-method">
+    <strong>Starting point:</strong> Apollo already has the scale, data, and origination machinery. Axion adds the computational layer: live credit state, belief propagation, structured agent disagreement, calibrated outcome scoring, and a posttraining loop that compounds Apollo-specific judgment.
+  </p>
+</header>
+
+<div class="tab-nav-wrap">
+  <nav class="tab-nav">
+    <div class="tab active" data-tab="overview" onclick="showTab('overview')">Overview</div>
+    <div class="tab" data-tab="surface" onclick="showTab('surface')">Credit Surface</div>
+    <div class="tab" data-tab="agents" onclick="showTab('agents')">Agent System</div>
+    <div class="tab" data-tab="roadmap" onclick="showTab('roadmap')">Roadmap</div>
+    <div class="tab" data-tab="training" onclick="showTab('training')">Training</div>
+    <div class="tab" data-tab="graph" onclick="showTab('graph')">Graph Explorer</div>
+    <div class="tab" data-tab="pilot" onclick="showTab('pilot')">Pilot</div>
+  </nav>
+</div>
+
+<div class="pane active" id="pane-overview">
+  <div class="container">
+    <div class="overview-lede">
+      Apollo's edge is not simply origination volume. The next edge is turning origination volume into a living credit organism. Every credit decision should create a forecast, every forecast should resolve, every resolution should score the system, and every scored outcome should improve Apollo's private models.
+    </div>
+
+    <div class="section-head">Core Thesis</div>
+    <div class="emboss-grid-3">
+      <div class="emboss emboss-accent">
+        <div class="e-kicker">System</div>
+        <div class="e-headline">An always-on credit operating system</div>
+        <div class="e-body">A monitored state for 100k to 1m loan and credit objects: borrowers, facilities, sponsors, covenants, collateral pools, sectors, Apollo teams, and liability constraints.</div>
+      </div>
+      <div class="emboss emboss-navy">
+        <div class="e-kicker">Forecasting</div>
+        <div class="e-headline">Belief propagation across the book</div>
+        <div class="e-body">If rates, a sponsor, a sector, a borrower metric, or a covenant outcome changes, the system estimates what else should move and ranks implications by book-level importance.</div>
+      </div>
+      <div class="emboss emboss-amber">
+        <div class="e-kicker">Compounding</div>
+        <div class="e-headline">Posttraining from Apollo decisions</div>
+        <div class="e-body">The agent system creates the training substrate: underwriting priors, live posteriors, human overrides, realized outcomes, calibration scores, and deal-level decision quality.</div>
+      </div>
+    </div>
+
+    <div class="section-head">What Prior Axion Work Contributes</div>
+    <div class="emboss-grid-3">
+      <div class="emboss">
+        <div class="e-kicker">Capital-Allocator Pattern</div>
+        <div class="e-headline">Move from flat research to an insight surface</div>
+        <div class="e-body">The reusable pattern is not a report. It is a surface that combines public prior, private posterior, market view, and graph impact into a ranked stream of actionable deltas.</div>
+      </div>
+      <div class="emboss">
+        <div class="e-kicker">Fusion Pattern</div>
+        <div class="e-headline">Disagreement is signal</div>
+        <div class="e-body">Different agents reason from different decompositions. In credit, debt-capacity, sponsor-behavior, sector, covenant, and liquidity agents should disagree visibly before a human decides.</div>
+      </div>
+      <div class="emboss">
+        <div class="e-kicker">Forecaster Quality Pattern</div>
+        <div class="e-headline">The objective is calibration under uncertainty</div>
+        <div class="e-body">Apollo-specific models should be judged by Brier score, stability, robustness to framing, coherent probabilities, and realized decision quality, not by how convincingly they write memos.</div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <em>The Jane Street analogy is cultural, not cosmetic:</em> every position is marked, every decision is decomposed into probabilities, every disagreement is routed, and every outcome improves the machinery.
+    </div>
+
+    <div class="section-head">The End State</div>
+    <div class="emboss emboss-accent">
+      <div class="e-kicker">Machine-Native Private Credit</div>
+      <div class="e-headline">Apollo can become the institution that knows, continuously, who should own each private-credit risk and at what price.</div>
+      <div class="e-body">The initial wedge is surveillance plus origination triage. The compounding advantage is an Apollo-specific posttrained credit model. The capstone is a liquidity layer: risk transfer, internal transfer pricing, secondary sale recommendations, and ultimately a new market structure around originated private credit.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-surface">
+  <div class="container">
+    <div class="overview-lede">
+      The main product object should be the <strong>Apollo Credit Surface</strong>: a live, queryable map of what Apollo believed at origination, what it should believe now, what markets imply, and what the rest of the book should infer.
+    </div>
+
+    <div class="section-head">The Four Views</div>
+    <div class="surface-flow">
+      <div class="surface-node">
+        <div class="surface-index">01</div>
+        <div class="surface-title">Underwritten Prior</div>
+        <div class="surface-copy">The original IC memo, base/downside case, sponsor view, covenant headroom, refi path, recovery estimate, and intended risk owner.</div>
+      </div>
+      <div class="surface-node">
+        <div class="surface-index">02</div>
+        <div class="surface-title">Live Private Posterior</div>
+        <div class="surface-copy">Borrower updates, payment behavior, manager notes, sponsor actions, covenant drift, comparable Apollo precedents, and private operating data.</div>
+      </div>
+      <div class="surface-node">
+        <div class="surface-index">03</div>
+        <div class="surface-title">Market / Liquidity View</div>
+        <div class="surface-copy">Public comps, rates, spread moves, syndicated loan marks, CDS/equity proxies, refi windows, liability-side constraints, and buyer demand.</div>
+      </div>
+      <div class="surface-node">
+        <div class="surface-index">04</div>
+        <div class="surface-title">Graph Impact</div>
+        <div class="surface-copy">Causal and evidential propagation to linked loans, sponsors, sectors, covenants, collateral types, funds, Athene blocks, and liquidity channels.</div>
+      </div>
+    </div>
+
+    <div class="section-head">Insight Function</div>
+    <div class="formula">Credit Insight =
+  underwriting drift
++ private/public belief delta
++ market/liquidity delta
++ propagated book impact
++ actionability
++ confidence in the evidence chain</div>
+
+    <div class="section-head">Atomic Objects</div>
+    <table class="data-table">
+      <thead><tr><th>Object</th><th>Examples</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Loan / Facility</td><td>Term loan, unitranche, warehouse, ABS tranche, preferred equity, bespoke financing</td><td>Primary unit for PD, LGD, covenant, spread, maturity, and liquidity state.</td></tr>
+        <tr><td>Borrower</td><td>Operating company, asset pool, specialty finance platform, sponsor-backed issuer</td><td>The entity whose fundamentals and behavior create repayment risk.</td></tr>
+        <tr><td>Sponsor / Originator</td><td>Private equity sponsor, platform partner, lending channel, broker, specialty originator</td><td>Behavior, support probability, repeat-game value, and adverse selection can propagate across deals.</td></tr>
+        <tr><td>Covenant / Trigger</td><td>Leverage, FCCR, borrowing-base, collateral test, rating trigger, liquidity covenant</td><td>The earliest structured signals of credit migration and negotiation leverage.</td></tr>
+        <tr><td>Sector / Collateral</td><td>Software, aviation, equipment, receivables, music rights, consumer loans, real estate</td><td>Shared drivers explain hidden concentration better than issuer labels alone.</td></tr>
+        <tr><td>Liability / Owner</td><td>Athene block, fund, SMAs, insurance-sensitive capital, ratings-sensitive balance sheet</td><td>The same credit can be attractive or unattractive depending on who should own it now.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-head">Insight Taxonomy</div>
+    <div class="emboss-grid-4">
+      <div class="emboss"><div class="e-kicker">Shock</div><div class="e-headline">Credit shock</div><div class="e-body">PD, LGD, refi, covenant, or liquidity changes that alter expected return.</div></div>
+      <div class="emboss"><div class="e-kicker">Drift</div><div class="e-headline">Underwriting drift</div><div class="e-body">Actual borrower path diverges from the original memo or base case.</div></div>
+      <div class="emboss"><div class="e-kicker">Delta</div><div class="e-headline">Market delta</div><div class="e-body">Apollo view differs from public comps, marks, or implied funding conditions.</div></div>
+      <div class="emboss"><div class="e-kicker">Graph</div><div class="e-headline">Tension pair</div><div class="e-body">Two linked internal beliefs cannot both be true at current probabilities.</div></div>
+      <div class="emboss"><div class="e-kicker">Origination</div><div class="e-headline">New-deal anomaly</div><div class="e-body">A request prices differently from Apollo precedents or current risk surface.</div></div>
+      <div class="emboss"><div class="e-kicker">Manager</div><div class="e-headline">Leadership query</div><div class="e-body">A senior question decomposes into routed agent and human sub-questions.</div></div>
+      <div class="emboss"><div class="e-kicker">Resolution</div><div class="e-headline">Outcome flush</div><div class="e-body">Resolved events update calibration, team priors, and model weights.</div></div>
+      <div class="emboss"><div class="e-kicker">Liquidity</div><div class="e-headline">Owner change</div><div class="e-body">The system identifies who should own, hedge, sell, or syndicate a risk.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-agents">
+  <div class="container">
+    <div class="overview-lede">
+      The first system is an agent network, not a single autonomous underwriter. It combines specialized credit agents, explicit routing, permissioned human review, and an audit trail for every belief update.
+    </div>
+
+    <div class="section-head">Agent Families</div>
+    <div class="emboss-grid-3">
+      <div class="emboss emboss-accent"><div class="e-kicker">01</div><div class="e-headline">Surveillance agents</div><div class="e-body">Monitor borrower updates, covenants, filings, macro, sector news, payment behavior, collateral data, and sponsor actions. Output: changed beliefs and affected exposures.</div></div>
+      <div class="emboss emboss-accent"><div class="e-kicker">02</div><div class="e-headline">Origination agents</div><div class="e-body">Ingest a new lending request, map comparable Apollo deals, generate base/downside cases, identify missing diligence, and recommend whether to pursue.</div></div>
+      <div class="emboss emboss-accent"><div class="e-kicker">03</div><div class="e-headline">Propagation agents</div><div class="e-body">Take a change in one node and estimate the rest of the book: linked sponsors, sectors, covenants, funds, refi walls, and liquidity channels.</div></div>
+      <div class="emboss emboss-navy"><div class="e-kicker">04</div><div class="e-headline">Manager-extension agents</div><div class="e-body">Represent the questions and operating style of credit leaders: what they ask first, what they mistrust, what exceptions matter, and when they want escalation.</div></div>
+      <div class="emboss emboss-navy"><div class="e-kicker">05</div><div class="e-headline">Agent-to-agent comms</div><div class="e-body">A request from a manager routes to relevant agents and internal people. Draft agent responses can be reviewed, corrected, approved, or blocked before propagation.</div></div>
+      <div class="emboss emboss-amber"><div class="e-kicker">06</div><div class="e-headline">Liquidity agents</div><div class="e-body">Evaluate internal transfer pricing, risk-transfer trades, secondary appetite, structuring alternatives, buyer fit, and liability-aware ownership.</div></div>
+    </div>
+
+    <div class="section-head">Always-On Workflow</div>
+    <table class="data-table">
+      <thead><tr><th>Trigger</th><th>Agent response</th><th>Human control</th></tr></thead>
+      <tbody>
+        <tr><td>Borrower update</td><td>Extract changed facts, compare to underwritten prior, update PD/LGD/refi/covenant forecasts, propagate to similar exposures.</td><td>Review queue for material moves, override capture, audit log.</td></tr>
+        <tr><td>New lending request</td><td>Classify deal, retrieve Apollo precedents, run base/downside decomposition, identify missing diligence, suggest pursue/pass/price range.</td><td>Deal team approves assumptions before external action.</td></tr>
+        <tr><td>Manager question</td><td>Decompose question into sub-questions, route to agents and relevant people, synthesize disagreement and confidence.</td><td>People can edit their agent's response before it is shared.</td></tr>
+        <tr><td>Macro/sector shock</td><td>Pass evidence, not conclusions, to relevant nodes; rerun only high-sensitivity exposures; rank the top implications.</td><td>Risk committee sees evidence chain and top uncertainty drivers.</td></tr>
+        <tr><td>Resolved outcome</td><td>Score forecasts, update calibration, identify which agents and assumptions were wrong, write training example.</td><td>Human labeler validates resolution and cause tags.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-head">Design Principle</div>
+    <div class="emboss emboss-accent">
+      <div class="e-kicker">Disagreement Routing</div>
+      <div class="e-headline">The system should not hide disagreement behind a single recommendation.</div>
+      <div class="e-body">For a material credit, one agent may reason from debt capacity, another from sponsor behavior, another from sector conditions, another from covenant math, and another from liquidity. When those agents disagree, the output is a ranked inspection path for Apollo humans.</div>
+      <div class="chip-row">
+        <span class="chip"><span class="dot"></span>Consensus probability</span>
+        <span class="chip"><span class="dot" style="background:var(--amber)"></span>Agent spread</span>
+        <span class="chip"><span class="dot" style="background:var(--navy)"></span>Evidence gaps</span>
+        <span class="chip"><span class="dot" style="background:var(--red)"></span>Escalation triggers</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-roadmap">
+  <div class="container">
+    <div class="overview-lede">
+      The roadmap should be staged around compounding data rights and operational trust. Start with a bounded book. Earn the right to touch origination. Then use the trace data to posttrain Apollo-specific credit judgment.
+    </div>
+
+    <div class="section-head">Operating Roadmap</div>
+    <ol class="phase-list">
+      <li><div class="ph-num">Phase 0</div><div><span class="ph-title">Scoping and ontology</span><span class="ph-detail">Choose one credit vertical, define the object model, decide which decisions the system is allowed to support, and identify 50 to 100 historical resolved outcomes.</span><span class="ph-deliv">Output: Apollo credit ontology v0</span></div><div class="ph-tag">Weeks 0-2</div></li>
+      <li><div class="ph-num">Phase 1</div><div><span class="ph-title">Surveillance pilot</span><span class="ph-detail">Build live state for a bounded existing book. Monitor internal updates and public evidence, update credit forecasts, and surface the daily ranked insight queue.</span><span class="ph-deliv">Output: live credit surface for one book</span></div><div class="ph-tag">0-90 days</div></li>
+      <li><div class="ph-num">Phase 2</div><div><span class="ph-title">Origination intake</span><span class="ph-detail">Add autonomous first-pass evaluation for new lending requests: comparable deals, risk decomposition, missing diligence, pricing tension, and pursue/pass rationale.</span><span class="ph-deliv">Output: always-on deal triage</span></div><div class="ph-tag">3-9 months</div></li>
+      <li><div class="ph-num">Phase 3</div><div><span class="ph-title">Manager extension and agent network</span><span class="ph-detail">Model senior credit managers' question patterns and build a permissioned agent-to-agent communication layer across people, portfolios, and teams.</span><span class="ph-deliv">Output: internal intelligence mesh</span></div><div class="ph-tag">9-18 months</div></li>
+      <li><div class="ph-num">Phase 4</div><div><span class="ph-title">Posttraining flywheel</span><span class="ph-detail">Train Apollo-specific adapters or private models using IC memos, outcomes, overrides, forecast scores, and analyst feedback. Promote models only if they beat baselines.</span><span class="ph-deliv">Output: Apollo-calibrated credit agents</span></div><div class="ph-tag">12-24 months</div></li>
+      <li><div class="ph-num">Phase 5</div><div><span class="ph-title">Private-credit foundation layer</span><span class="ph-detail">After the corpus and labels are clean, continue-pretrain or pretrain on Apollo's private credit corpus to internalize Apollo-specific underwriting and market structure.</span><span class="ph-deliv">Output: proprietary private-credit model</span></div><div class="ph-tag">24-60 months</div></li>
+      <li><div class="ph-num">Phase 6</div><div><span class="ph-title">Liquidity layer</span><span class="ph-detail">Use live credit state and ownership constraints to recommend internal transfer pricing, sales, syndication, hedges, risk-transfer structures, and external liquidity channels.</span><span class="ph-deliv">Output: new private-credit market layer</span></div><div class="ph-tag">capstone</div></li>
+    </ol>
+
+    <div class="section-head">Twelve-Week Pilot Shape</div>
+    <div class="emboss-grid-3">
+      <div class="emboss"><div class="e-kicker">Weeks 1-2</div><div class="e-headline">Define the wedge</div><div class="e-body">Pick one book, one origination channel, one senior owner, object schema, source permissions, historical outcome set, and daily review ritual.</div></div>
+      <div class="emboss"><div class="e-kicker">Weeks 3-4</div><div class="e-headline">First insight queue</div><div class="e-body">Ingest updates, build underwritten-prior versus live-posterior views, and produce the first ranked surveillance queue with evidence chains.</div></div>
+      <div class="emboss"><div class="e-kicker">Weeks 5-6</div><div class="e-headline">New-deal triage</div><div class="e-body">Prototype lending-request intake with comparable Apollo precedents, missing diligence, risk decomposition, and recommended pursue/pass gates.</div></div>
+      <div class="emboss"><div class="e-kicker">Weeks 7-8</div><div class="e-headline">Propagation and manager workflow</div><div class="e-body">Add causal neighborhoods, scenario propagation, and leadership-question routing across agents and people.</div></div>
+      <div class="emboss"><div class="e-kicker">Weeks 9-10</div><div class="e-headline">Backtest and calibration</div><div class="e-body">Score forecasts against historical watchlist/default/refi/covenant events. Identify systematic overconfidence, missed features, and high-value labels.</div></div>
+      <div class="emboss"><div class="e-kicker">Weeks 11-12</div><div class="e-headline">Expansion plan</div><div class="e-body">Security review, operating metrics, model promotion rules, data rights, integration plan, and roadmap to Apollo-wide deployment.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-training">
+  <div class="container">
+    <div class="overview-lede">
+      Bogdan's three buckets map cleanly to one compounding system. The agent system creates the traces. Posttraining turns traces into Apollo-specific behavior. Pretraining only becomes sensible once the corpus and labels are strong enough.
+    </div>
+
+    <div class="section-head">Agent System -> Posttraining -> Pretraining</div>
+    <div class="axis-grid">
+      <div class="ladder">
+        <div class="ladder-step"><div class="step-id">Layer 1</div><div><h4>Agent system</h4><p>Continuously monitor, triage, reason, propagate, route, and write auditable decision traces. This is the first product and the data-generating machine.</p></div></div>
+        <div class="ladder-step"><div class="step-id">Layer 2</div><div><h4>Posttraining</h4><p>Use Apollo memos, outcomes, overrides, and scored forecasts to train agents that are calibrated for Apollo's domains, risk appetite, language, and escalation rules.</p></div></div>
+        <div class="ladder-step"><div class="step-id">Layer 3</div><div><h4>Pretraining / continued pretraining</h4><p>Once data is normalized and outcome labels exist, train a deeper Apollo private-credit model that has internalized sponsor behavior, covenant dynamics, recovery patterns, and origination context.</p></div></div>
+      </div>
+      <div class="emboss emboss-accent">
+        <div class="e-kicker">Training Objective</div>
+        <div class="e-headline">Do not train a better memo writer. Train calibrated credit judgment.</div>
+        <div class="e-body">The benchmark suite should measure calibration, stability, robustness to framing, probability coherence, responsiveness to new evidence, sharpness, and decision quality. A model that writes beautifully but misses covenant breaches is a failure.</div>
+        <div class="chip-row">
+          <span class="chip"><span class="dot"></span>Brier score</span>
+          <span class="chip"><span class="dot" style="background:var(--navy)"></span>Resolution rate</span>
+          <span class="chip"><span class="dot" style="background:var(--amber)"></span>Prompt robustness</span>
+          <span class="chip"><span class="dot" style="background:var(--purple)"></span>Decision lift</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head">Forecastable Credit Questions</div>
+    <table class="data-table">
+      <thead><tr><th>Question class</th><th>Example forecast object</th><th>Resolution source</th></tr></thead>
+      <tbody>
+        <tr><td>Performance</td><td>Will borrower EBITDA miss underwritten case by more than 15% by Q4 2027?</td><td>Borrower reporting and Apollo underwriting model.</td></tr>
+        <tr><td>Covenant</td><td>Will this loan require amendment, waiver, or covenant reset before maturity?</td><td>Legal documents, amendment records, internal monitoring.</td></tr>
+        <tr><td>Refinancing</td><td>Will this borrower refinance without sponsor equity before the stated maturity window?</td><td>Refi transaction, amendment, maturity extension, sponsor contribution.</td></tr>
+        <tr><td>Recovery</td><td>In a downside event, will recovery fall below 65% of par?</td><td>Workout outcome, sale proceeds, mark, or independent valuation.</td></tr>
+        <tr><td>Origination</td><td>Will this new deal outperform Apollo's vintage-adjusted comparable set?</td><td>Realized spread, losses, migration, prepayment, and opportunity cost.</td></tr>
+        <tr><td>Liquidity</td><td>Will secondary buyer appetite clear above Apollo's hold value within six months?</td><td>Bid indications, executed sale, internal transfer, or no-clear outcome.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="section-head">Posttraining Dataset</div>
+    <div class="emboss-grid-4">
+      <div class="emboss"><div class="e-kicker">Inputs</div><div class="e-headline">Deal corpus</div><div class="e-body">IC memos, diligence materials, borrower updates, covenants, models, legal docs, market comps.</div></div>
+      <div class="emboss"><div class="e-kicker">Labels</div><div class="e-headline">Resolved outcomes</div><div class="e-body">Defaults, refis, amendments, losses, recoveries, upgrades/downgrades, exits, sale prices.</div></div>
+      <div class="emboss"><div class="e-kicker">Feedback</div><div class="e-headline">Human judgment</div><div class="e-body">Manager overrides, analyst corrections, exception memos, confidence tags, evidence-quality labels.</div></div>
+      <div class="emboss"><div class="e-kicker">Scores</div><div class="e-headline">Decision metrics</div><div class="e-body">Calibration, forecast spread, false positives, missed watchlist names, time-to-escalation, return lift.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-graph">
+  <div class="graph-layout">
+    <div class="graph-panel">
+      <svg id="graphSvg"></svg>
+      <div class="graph-controls">
+        <h4>Apollo Roadmap Graph</h4>
+        <p>Click a node to inspect the system component and its dependencies. Green edges are reinforcing dependencies; dashed red edges are failure modes or gating constraints.</p>
+      </div>
+      <div class="graph-legend">
+        <div class="line"><span class="swatch" style="background:var(--accent)"></span>reinforcing edge</div>
+        <div class="line"><span class="swatch" style="background:var(--red);border-top:1px dashed var(--red)"></span>risk / gating edge</div>
+        <div class="line" style="margin-top:4px;color:var(--dimmer)">node size = roadmap centrality</div>
+      </div>
+    </div>
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-empty">Click a node to inspect the Apollo roadmap graph.<br><br>Drag nodes to reposition &middot; scroll to zoom &middot; drag background to pan.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pane" id="pane-pilot">
+  <div class="container">
+    <div class="overview-lede">
+      The concrete ask is to pick the first wedge and the operating owner. The best initial wedge is a bounded surveillance pilot that also accepts new lending requests, because it produces immediate value and creates the posttraining data loop.
+    </div>
+
+    <div class="section-head">Recommended First Wedge</div>
+    <div class="emboss emboss-accent">
+      <div class="e-kicker">Start Here</div>
+      <div class="e-headline">One credit vertical, one existing book, one origination channel, one senior sponsor.</div>
+      <div class="e-body">The pilot should prove three things: Axion catches material credit drift faster, Axion improves new-deal triage quality, and Axion creates clean training traces for Apollo-specific posttraining.</div>
+    </div>
+
+    <div class="section-head">Acceptance Criteria</div>
+    <div class="emboss-grid-3">
+      <div class="emboss"><div class="e-stat">500-2,000</div><div class="e-label">Credit objects</div><div class="e-body">A scoped book with enough variety to test propagation without boiling the ocean.</div></div>
+      <div class="emboss"><div class="e-stat">100+</div><div class="e-label">Forecast objects</div><div class="e-body">Resolvable PD, covenant, refi, recovery, liquidity, and borrower-performance questions.</div></div>
+      <div class="emboss"><div class="e-stat">20-50</div><div class="e-label">Historical outcomes</div><div class="e-body">A held-out benchmark set to test whether the system would have surfaced known risks earlier.</div></div>
+      <div class="emboss"><div class="e-stat">Daily</div><div class="e-label">Insight queue</div><div class="e-body">Ranked updates with affected exposures, evidence chains, and recommended human review paths.</div></div>
+      <div class="emboss"><div class="e-stat">Weekly</div><div class="e-label">Calibration review</div><div class="e-body">Forecast movement, false positives, missed risks, agent disagreement, and override capture.</div></div>
+      <div class="emboss"><div class="e-stat">12 weeks</div><div class="e-label">Go / expand decision</div><div class="e-body">Clear decision on expansion to more books, origination channels, and posttraining scope.</div></div>
+    </div>
+
+    <div class="section-head">Questions for Bogdan</div>
+    <ul class="question-list">
+      <li><div class="q-k">Wedge</div><div class="q-v">Which wedge matters most: existing-book surveillance, new-deal intake, manager extension, Athene/liability-aware allocation, or liquidity?</div></li>
+      <li><div class="q-k">Book</div><div class="q-v">What is the smallest book where a 12-week pilot can surface real decisions without forcing firm-wide integration on day one?</div></li>
+      <li><div class="q-k">Data</div><div class="q-v">Can the pilot use internal borrower updates, IC memos, covenant data, and historical outcomes, or should it begin public-only?</div></li>
+      <li><div class="q-k">Decision</div><div class="q-v">What decision should the system be measured against: earlier watchlist migration, better pursue/pass, better pricing, lower loss, or faster manager response?</div></li>
+      <li><div class="q-k">Autonomy</div><div class="q-v">Where is agent autonomy acceptable, and where must every response be reviewed by Apollo people before it is shared or acted on?</div></li>
+      <li><div class="q-k">Model Rights</div><div class="q-v">Should Apollo own a private model namespace from the start, and what data/model-weight restrictions are required?</div></li>
+      <li><div class="q-k">Liquidity</div><div class="q-v">Is the liquidity layer an internal transfer-pricing product first, or an external market structure Apollo eventually wants to create?</div></li>
+    </ul>
+
+    <div class="section-head">Single-Sentence Offer</div>
+    <div class="emboss emboss-navy">
+      <div class="e-kicker">Positioning</div>
+      <div class="e-headline">We will start with one credit book and build a continuously updating private-credit world model.</div>
+      <div class="e-body">Every loan has a live posterior, every event routes to affected exposures, every agent disagreement is surfaced, every IC decision becomes a training example, and the system compounds into Apollo-specific posttrained models and, later, a proprietary private-credit foundation model.</div>
+    </div>
+
+    <div class="source-note">
+      Public scale anchors: Apollo reported total AUM of $1.026T and LTM origination of $324B in its <a href="https://ir.apollo.com/sec-filings/content/0001858681-26-000021/agmearningsrelease1q2026.htm" target="_blank" rel="noopener">Q1 2026 earnings materials</a>. Apollo's public Credit page reports $834B Credit AUM, 590+ investment professionals, 4,000+ issuer relationships, and 16 origination platform businesses as of March 31, 2026. See <a href="https://www.apollo.com/strategies/asset-management/credit" target="_blank" rel="noopener">Apollo Credit</a>.
+    </div>
+  </div>
+</div>
+
+<footer class="atlas-footer">
+  <div>Built by Eternis Research for Apollo roadmap discussion. This is a strategic product roadmap, not investment advice.</div>
+</footer>
+
+<script>
+const ROADMAP_NODES = [
+  {id:"SURF", label:"Credit Surface", group:"core", size:18, title:"Apollo Credit Surface", detail:"The live object layer over loans, borrowers, sponsors, covenants, sectors, managers, and ownership constraints.", metric:"Primary product object"},
+  {id:"PRIOR", label:"Underwritten Prior", group:"data", size:11, title:"Underwritten Prior", detail:"Original IC memo, base/downside cases, sponsor assessment, covenant headroom, recovery assumptions, and intended risk owner.", metric:"Origination memory"},
+  {id:"POST", label:"Live Posterior", group:"data", size:13, title:"Live Private Posterior", detail:"Current Apollo belief after borrower updates, private operating data, sponsor actions, payment behavior, and manager notes.", metric:"Current belief state"},
+  {id:"MKT", label:"Market View", group:"data", size:10, title:"Market / Liquidity View", detail:"External rates, spreads, comps, marks, public proxies, refi windows, and buyer appetite.", metric:"External reference frame"},
+  {id:"GRAPH", label:"Belief Graph", group:"core", size:17, title:"Belief Propagation Graph", detail:"Typed and weighted links between credits, sectors, sponsors, covenants, collateral, and owners. Used to answer: if X moves, what else moves?", metric:"Causal substrate"},
+  {id:"SURV", label:"Surveillance Agents", group:"agent", size:14, title:"Surveillance Agents", detail:"Monitor internal and external evidence, update forecasts, route material changes, and produce the daily credit insight queue.", metric:"Always-on monitoring"},
+  {id:"ORIG", label:"Origination Intake", group:"agent", size:14, title:"Origination Intake Agents", detail:"Evaluate new lending requests against Apollo precedents, current market state, missing diligence, pricing, and downside cases.", metric:"Autonomous first pass"},
+  {id:"PROP", label:"Propagation Agents", group:"agent", size:13, title:"Propagation Agents", detail:"Take a borrower, sector, sponsor, covenant, or macro change and propagate implications across the relevant book.", metric:"Book impact ranking"},
+  {id:"MGR", label:"Manager Extension", group:"agent", size:12, title:"Manager Extension", detail:"Encode the operating questions and escalation style of senior credit leaders so the agent network asks the right things first.", metric:"Leadership leverage"},
+  {id:"COMMS", label:"Agent Comms", group:"agent", size:11, title:"Agent-to-Agent Communication", detail:"Requests route between agents and people. Humans can review and correct draft responses before their agents reply.", metric:"Permissioned mesh"},
+  {id:"EVAL", label:"Calibration Evals", group:"train", size:15, title:"Calibration and Decision Evals", detail:"Brier score, robustness, stability, coherence, update quality, and realized decision lift. Promotion requires beating baselines.", metric:"Quality gate"},
+  {id:"TRACE", label:"Decision Traces", group:"train", size:13, title:"Decision Traces", detail:"Every forecast, memo comparison, override, outcome, and model disagreement becomes a structured training example.", metric:"Training substrate"},
+  {id:"POSTTR", label:"Posttraining", group:"train", size:14, title:"Apollo Posttraining", detail:"Apollo-specific adapters or private models trained on resolved credit outcomes, analyst feedback, and decision traces.", metric:"12-24 month loop"},
+  {id:"PRETR", label:"Private-Credit Model", group:"train", size:13, title:"Private-Credit Foundation Layer", detail:"Continued pretraining or pretraining once the corpus, labels, permissions, and benchmarks are mature.", metric:"24-60 month moat"},
+  {id:"LIQ", label:"Liquidity Layer", group:"liquidity", size:15, title:"Liquidity Layer", detail:"Internal transfer pricing, sale recommendations, risk-transfer structures, syndication, and buyer matching based on live credit state.", metric:"Capstone product"},
+  {id:"RISK", label:"Risk Controls", group:"risk", size:11, title:"Risk Controls", detail:"Access control, audit trails, clean-room posttraining, evidence provenance, human approval gates, and model rollback.", metric:"Deployment gate"},
+  {id:"FAIL1", label:"Data Mess", group:"risk", size:9, title:"Gating Risk: Messy Data", detail:"If memos, covenants, outcomes, and borrower updates are not normalized, posttraining becomes weak and surveillance scope stays narrow.", metric:"Mitigation: ontology first"},
+  {id:"FAIL2", label:"False Autonomy", group:"risk", size:9, title:"Gating Risk: False Autonomy", detail:"Agents should not bypass Apollo judgment. The system earns autonomy through scored outcomes, auditability, and bounded permissions.", metric:"Mitigation: review gates"}
+];
+const ROADMAP_EDGES = [
+  {source:"PRIOR", target:"SURF", sign:"+", label:"origination memory"},
+  {source:"POST", target:"SURF", sign:"+", label:"current private belief"},
+  {source:"MKT", target:"SURF", sign:"+", label:"external reference"},
+  {source:"SURF", target:"GRAPH", sign:"+", label:"nodes and states"},
+  {source:"GRAPH", target:"PROP", sign:"+", label:"propagation paths"},
+  {source:"SURV", target:"POST", sign:"+", label:"evidence updates"},
+  {source:"SURV", target:"GRAPH", sign:"+", label:"event routing"},
+  {source:"ORIG", target:"PRIOR", sign:"+", label:"new deal priors"},
+  {source:"ORIG", target:"TRACE", sign:"+", label:"decision records"},
+  {source:"PROP", target:"SURF", sign:"+", label:"book impact"},
+  {source:"MGR", target:"COMMS", sign:"+", label:"question routing"},
+  {source:"COMMS", target:"TRACE", sign:"+", label:"reviewed responses"},
+  {source:"TRACE", target:"EVAL", sign:"+", label:"scoring"},
+  {source:"EVAL", target:"POSTTR", sign:"+", label:"promotion gate"},
+  {source:"POSTTR", target:"SURV", sign:"+", label:"better agents"},
+  {source:"POSTTR", target:"ORIG", sign:"+", label:"better triage"},
+  {source:"POSTTR", target:"PRETR", sign:"+", label:"corpus and labels"},
+  {source:"SURF", target:"LIQ", sign:"+", label:"live risk marks"},
+  {source:"GRAPH", target:"LIQ", sign:"+", label:"ownership propagation"},
+  {source:"RISK", target:"SURV", sign:"+", label:"deployment controls"},
+  {source:"RISK", target:"POSTTR", sign:"+", label:"clean-room loop"},
+  {source:"FAIL1", target:"POSTTR", sign:"-", label:"weak labels"},
+  {source:"FAIL1", target:"PRETR", sign:"-", label:"bad corpus"},
+  {source:"FAIL2", target:"COMMS", sign:"-", label:"review risk"},
+  {source:"FAIL2", target:"ORIG", sign:"-", label:"premature action"}
+];
+const GROUPS = {
+  core:{color:"#4f7942", label:"core substrate"},
+  data:{color:"#1e3a5f", label:"data views"},
+  agent:{color:"#0891b2", label:"agent system"},
+  train:{color:"#7c3aed", label:"training loop"},
+  liquidity:{color:"#b45309", label:"liquidity"},
+  risk:{color:"#a3553c", label:"risk gates"}
+};
+
+let graphInitialized = false;
+function showTab(name){
+  document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.tab===name));
+  document.querySelectorAll(".pane").forEach(p=>p.classList.toggle("active",p.id==="pane-"+name));
+  if(name==="graph"&&!graphInitialized)initGraph();
+  if(name==="graph"&&window._sim){window._sim.alphaTarget(.15).restart();setTimeout(()=>window._sim.alphaTarget(0),700)}
+  window.scrollTo({top:0,behavior:"instant"});
+}
+window.addEventListener("DOMContentLoaded",()=>{
+  const requested = location.hash.replace("#","");
+  const valid = ["overview","surface","agents","roadmap","training","graph","pilot"];
+  if(valid.includes(requested)) showTab(requested);
+});
+
+function initGraph(){
+  graphInitialized = true;
+  if(!window.d3){
+    document.getElementById("detailPanel").innerHTML = '<div class="detail-empty">Graph library failed to load. The roadmap content is still available in the other tabs.</div>';
+    return;
+  }
+  const svg = d3.select("#graphSvg");
+  const box = svg.node().getBoundingClientRect();
+  const width = Math.max(720, box.width);
+  const height = Math.max(560, box.height);
+  svg.attr("viewBox", [0,0,width,height]);
+  const root = svg.append("g");
+  svg.call(d3.zoom().scaleExtent([.35,4]).on("zoom",e=>root.attr("transform",e.transform)));
+  const nodes = ROADMAP_NODES.map(d=>({...d}));
+  const edges = ROADMAP_EDGES.map(d=>({...d}));
+  const sim = d3.forceSimulation(nodes)
+    .force("link", d3.forceLink(edges).id(d=>d.id).distance(d=>d.sign==="-"?170:118).strength(d=>d.sign==="-"?.08:.18))
+    .force("charge", d3.forceManyBody().strength(-430))
+    .force("center", d3.forceCenter(width/2,height/2))
+    .force("collide", d3.forceCollide().radius(d=>d.size+20))
+    .alphaDecay(.035);
+  window._sim = sim;
+
+  const edge = root.append("g").selectAll("line").data(edges).enter().append("line")
+    .attr("class",d=>"edge "+(d.sign==="-"?"neg":"pos"))
+    .attr("stroke-width",d=>d.sign==="-"?1.1:1.5);
+  const node = root.append("g").selectAll("circle").data(nodes).enter().append("circle")
+    .attr("class","node")
+    .attr("r",d=>d.size)
+    .attr("fill",d=>GROUPS[d.group].color)
+    .on("click",(event,d)=>{selectNode(d.id,node,edge);event.stopPropagation()})
+    .call(d3.drag()
+      .on("start",(event,d)=>{if(!event.active)sim.alphaTarget(.25).restart();d.fx=d.x;d.fy=d.y})
+      .on("drag",(event,d)=>{d.fx=event.x;d.fy=event.y})
+      .on("end",(event,d)=>{if(!event.active)sim.alphaTarget(0);d.fx=null;d.fy=null}));
+  node.append("title").text(d=>d.label+" - "+GROUPS[d.group].label);
+  const labels = root.append("g").selectAll("text").data(nodes).enter().append("text")
+    .attr("class","node-label")
+    .attr("text-anchor","middle")
+    .attr("dy",d=>-(d.size+7))
+    .text(d=>d.id);
+  svg.on("click",()=>selectNode(null,node,edge));
+  sim.on("tick",()=>{
+    edge.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y).attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
+    node.attr("cx",d=>d.x).attr("cy",d=>d.y);
+    labels.attr("x",d=>d.x).attr("y",d=>d.y);
+  });
+  selectNode("SURF",node,edge);
+}
+
+function selectNode(id,nodeSel,edgeSel){
+  nodeSel.classed("selected",d=>d.id===id);
+  edgeSel.classed("highlight",d=>id&&(d.source.id===id||d.target.id===id));
+  const panel = document.getElementById("detailPanel");
+  if(!id){
+    panel.innerHTML = '<div class="detail-empty">Click a node to inspect the Apollo roadmap graph.<br><br>Drag nodes to reposition &middot; scroll to zoom &middot; drag background to pan.</div>';
+    return;
+  }
+  const n = ROADMAP_NODES.find(x=>x.id===id);
+  const incoming = ROADMAP_EDGES.filter(e=>e.target===id).map(e=>e.source+" -> "+e.label).join("<br>") || "None";
+  const outgoing = ROADMAP_EDGES.filter(e=>e.source===id).map(e=>e.label+" -> "+e.target).join("<br>") || "None";
+  panel.innerHTML = `
+    <div class="detail-kicker">${GROUPS[n.group].label}</div>
+    <div class="detail-id">${n.id}</div>
+    <div class="detail-title">${n.title}</div>
+    <div class="detail-copy">${n.detail}</div>
+    <div class="detail-meta">
+      <div class="k">Metric</div><div class="v">${n.metric}</div>
+      <div class="k">Inbound</div><div class="v">${incoming}</div>
+      <div class="k">Outbound</div><div class="v">${outgoing}</div>
+    </div>`;
+}
+</script>
+</body>
+</html>
