@@ -43,6 +43,14 @@ a:hover{border-bottom-color:var(--accent)}
 .tab{font-size:10px;font-weight:500;letter-spacing:0;text-transform:uppercase;color:var(--dimmer);padding:14px 0;border-bottom:2px solid transparent;cursor:pointer;transition:color .18s;user-select:none}
 .tab:hover{color:var(--dim)}
 .tab.active{color:var(--text);border-bottom-color:var(--text)}
+.tab.featured{color:var(--accent);font-weight:600}
+.tab.featured::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle;transform:translateY(-1px)}
+.tab.featured.active{color:var(--accent);border-bottom-color:var(--accent)}
+.future-section{background:rgba(79,121,66,.05);border:1px solid rgba(79,121,66,.22);border-radius:12px;padding:26px 28px;margin:28px 0 8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.future-section .section-head{color:var(--accent);border-bottom-color:rgba(79,121,66,.22);margin:24px 0 14px}
+.future-section .section-head:first-of-type{margin-top:0}
+.future-section h3.future-title{font-size:22px;font-weight:400;line-height:1.32;margin:0 0 14px;color:var(--text);max-width:880px}
+.future-section .slide-copy{margin-bottom:10px}
 .pane{display:none}
 .pane.active{display:block}
 .container{max-width:1400px;margin:0 auto;padding:32px 40px 82px}
@@ -220,14 +228,14 @@ a:hover{border-bottom-color:var(--accent)}
   <div class="tab-nav">
     <div class="tab active" data-tab="thesis" onclick="showTab('thesis')">Mandate</div>
     <div class="tab" data-tab="about" onclick="showTab('about')">About Eternis</div>
+    <div class="tab featured" data-tab="graph" onclick="showTab('graph')">State Models</div>
+    <div class="tab featured" data-tab="roadmap" onclick="showTab('roadmap')">Roadmap</div>
     <div class="tab" data-tab="system" onclick="showTab('system')">Axion Surface</div>
     <div class="tab" data-tab="engines" onclick="showTab('engines')">Forecast Layers</div>
     <div class="tab" data-tab="platforms" onclick="showTab('platforms')">Data Wedges</div>
     <div class="tab" data-tab="cases" onclick="showTab('cases')">Pilot Workflows</div>
     <div class="tab" data-tab="risk" onclick="showTab('risk')">Risk OS</div>
     <div class="tab" data-tab="ai" onclick="showTab('ai')">Controls</div>
-    <div class="tab" data-tab="roadmap" onclick="showTab('roadmap')">Roadmap</div>
-    <div class="tab" data-tab="graph" onclick="showTab('graph')">State Models</div>
     <div class="tab" data-tab="nextsteps" onclick="showTab('nextsteps')">Pilot Next Steps</div>
     <div class="tab" data-tab="sources" onclick="showTab('sources')">Appendix</div>
   </div>
@@ -560,15 +568,53 @@ a:hover{border-bottom-color:var(--accent)}
         <tr><td>04</td><td>Calibration and expansion decision.</td><td>False positives, missed risks, forecast movement, and human overrides reviewed.</td><td>Creates the data substrate for posttraining.</td></tr>
       </tbody>
     </table>
-    <div class="section-head">End-State: Open Credit Facility</div>
-    <div class="flow-loop facility-loop">
-      <div class="loop-step"><div class="loop-num">01</div><div class="loop-title">Request</div><div class="loop-copy">A company agent sends a financing request to Apollo's agent with context, documents, desired terms, and timing.</div></div>
-      <div class="loop-step"><div class="loop-num">02</div><div class="loop-title">Validate</div><div class="loop-copy">Axion verifies source quality, borrower facts, fraud risk, relationship history, document completeness, and fit with Apollo's mandate.</div></div>
-      <div class="loop-step"><div class="loop-num">03</div><div class="loop-title">Reason</div><div class="loop-copy">The request is mapped to Apollo State: precedents, live book exposures, capital fit, risk forecasts, buyer demand, and missing diligence.</div></div>
-      <div class="loop-step"><div class="loop-num">04</div><div class="loop-title">Respond</div><div class="loop-copy">Apollo's agent returns pursue, decline, revise terms, request diligence, syndicate, or propose a better facility structure.</div></div>
-      <div class="loop-step"><div class="loop-num">05</div><div class="loop-title">Learn</div><div class="loop-copy">The outcome becomes a forecast resolution, calibration event, and future training signal.</div></div>
+    <div class="future-section">
+      <div class="section-head">Future of Private Credit</div>
+      <h3 class="future-title">What does the future of private credit &mdash; and capital allocation for liquidity gaps in general &mdash; look like?</h3>
+      <p class="slide-copy">The end state is an automated credit facility, open to requests from anywhere in the world. A request arrives; the facility proposes the right deal. This expands Apollo&rsquo;s TAM and positions Apollo to author the first open credit facility protocol between agents.</p>
+
+      <div class="section-head">How a deal closes between two agents</div>
+      <div class="grid-2">
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">Request</div>
+          <div class="e-headline">The company&rsquo;s agent submits the loan.</div>
+          <div class="e-body">A company needs capital. Its agent representative sends the request to Apollo&rsquo;s agent with context, documents, desired terms, and timing.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">Response</div>
+          <div class="e-headline">Apollo&rsquo;s agent reviews the source and responds instantly.</div>
+          <div class="e-body">Apollo&rsquo;s agent verifies the request, maps it against the live book and capital fit, and returns a decision &mdash; pursue, decline, revise, syndicate, or restructure &mdash; without waiting for a human cycle.</div>
+        </div>
+      </div>
+
+      <div class="section-head">In the limit, the more efficient system wins</div>
+      <p class="slide-copy">More efficient means faster, better outcomes, better risk pricing, better reasoning. Apollo can compound all four, in stages. The best private credit operator will be an automated system that monitors the world continuously, mines it for capital-routing signal at high pace, and fills liquidity gaps before slower operators see them. This is what it takes to become the Jane Street of private credit.</p>
+
+      <div class="section-head">The volume forecast &mdash; Jevon&rsquo;s paradox for capital markets</div>
+      <p class="slide-copy">One big forecast underlies everything above:</p>
+      <div class="grid-2">
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">01 / Demand</div>
+          <div class="e-headline">More intelligent systems means more actors needing capital.</div>
+          <div class="e-body">As the number of intelligent systems in the world grows, the number of actors that require capital to act grows with them. Net loans grow, loan volumes grow, and the rate of origination and repayment accelerates. The long-run data on total credit supports this trajectory.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">02 / Volume</div>
+          <div class="e-headline">Lower margin per loan is fine if volume grows faster.</div>
+          <div class="e-body">This is Jevon&rsquo;s paradox applied to capital flows. As credit becomes easier to issue, total credit volume expands beyond what any margin compression can offset. Apollo can be a larger, more profitable business at a lower per-loan margin.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">03 / Edge</div>
+          <div class="e-headline">The durable edge is risk, speed, and gap-filling.</div>
+          <div class="e-body">Apollo wins the larger pool by holding edge in risk assessment, speed of liquidity delivery, and the ability to fill gaps slower operators miss. Superior risk assessment at scale is the moat.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">04 / Bottleneck</div>
+          <div class="e-headline">The remaining bottleneck is human and physical.</div>
+          <div class="e-body">Once monitoring and pricing are automated, the ultimate bottleneck becomes human decision-making and execution risk &mdash; the interface with the physical world. Apollo&rsquo;s job in this future is to keep that interface small and well-instrumented.</div>
+        </div>
+      </div>
     </div>
-    <div class="insight"><strong>End state:</strong> Apollo becomes a continuously learning, self-updating credit system and eventually an open credit facility protocol between agents. The more efficient system wins by moving faster, reasoning better, pricing risk better, and filling liquidity gaps with less friction. Even if margin per loan compresses, superior risk assessment and higher credit velocity can create a larger profit pool. This is the path to becoming the Jane Street of private credit.</div>
   </div>
 </section>
 
