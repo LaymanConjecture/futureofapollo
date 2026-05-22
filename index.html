@@ -210,10 +210,9 @@ a:hover{border-bottom-color:var(--accent)}
   .loop-step:not(:last-child)::after{display:none}
   .arch-step:not(:last-child)::after{display:none}
   .wheel,.wheel svg{min-height:410px}
-  .table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;font-size:11px;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) 0 0/40px 100% no-repeat local,linear-gradient(to right,rgba(255,255,255,0),#fff 70%) 100% 0/40px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.2),transparent) 0 0/16px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.2),transparent) 100% 0/16px 100% no-repeat scroll,#fff}
-  .table thead,.table tbody{display:table;width:max-content;min-width:100%;background:transparent}
-  .table th,.table td{padding:9px 11px}
-  .table tr:not(:last-child){border-bottom:1px solid var(--border-dim)}
+  .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:18px 0;border-radius:8px;background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) 0 0/40px 100% no-repeat local,linear-gradient(to right,rgba(255,255,255,0),#fff 70%) 100% 0/40px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.2),transparent) 0 0/16px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.2),transparent) 100% 0/16px 100% no-repeat scroll,#fff}
+  .table-wrap > .table{margin:0;font-size:11px;min-width:max-content}
+  .table-wrap > .table th,.table-wrap > .table td{padding:9px 11px;white-space:normal}
   .state-text{font-size:11px}
   .state-subtext{font-size:9.5px}
   html,body{max-width:100vw}
@@ -874,6 +873,14 @@ a:hover{border-bottom-color:var(--accent)}
 </footer>
 
 <script>
+document.querySelectorAll('table.table').forEach(t => {
+  if(t.parentElement && t.parentElement.classList.contains('table-wrap')) return;
+  const w = document.createElement('div');
+  w.className = 'table-wrap';
+  t.parentNode.insertBefore(w, t);
+  w.appendChild(t);
+});
+
 const tabs = [...document.querySelectorAll('.tab')];
 const panes = [...document.querySelectorAll('.pane')];
 
