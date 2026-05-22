@@ -55,6 +55,12 @@ a:hover{border-bottom-color:var(--accent)}
 .future-section h3.future-title{font-size:22px;font-weight:400;line-height:1.32;margin:0 0 14px;color:var(--text);max-width:880px}
 .future-section .slide-copy{margin-bottom:10px}
 .future-section .future-lead{font-size:15px;font-weight:500;line-height:1.6;color:var(--text);border-left:3px solid var(--accent);background:rgba(79,121,66,.1);padding:14px 18px;border-radius:0 6px 6px 0;margin:0 0 22px;max-width:880px}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin:14px 0 8px}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.team-card .tc-name{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.team-card .tc-role{font-size:11px;color:var(--dim);line-height:1.55}
+.team-card.advisor{border-left:3px solid var(--cyan);background:linear-gradient(135deg,#fff 0%,#f8fcfd 100%)}
+.team-card.advisor .tc-tag{display:inline-block;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--cyan);background:rgba(8,145,178,.08);border:1px solid rgba(8,145,178,.25);padding:2px 8px;border-radius:999px;margin-bottom:8px}
 .pane{display:block;scroll-margin-top:60px}
 .container{max-width:1400px;margin:0 auto;padding:32px 40px 82px}
 .slide{min-height:calc(100vh - 72px);padding:28px 0 42px;border-bottom:1px solid rgba(214,211,209,.7);display:grid;align-content:start}
@@ -347,6 +353,47 @@ a:hover{border-bottom-color:var(--accent)}
       </div>
     </div>
     <div class="insight"><strong>How we operate:</strong> Eternis is a small, concentrated team. We believe small teams can do the work of companies with thousands of people, provided we can effectively scale the use of agents. The same scaling principle we deploy for Apollo is the one we use internally.</div>
+
+    <div class="section-head">Team</div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="tc-name">Srikar Varadaraj</div>
+        <div class="tc-role">3x founder. PhD candidate @ NYU. MA / BA Math &amp; CS @ Columbia.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Ken Li</div>
+        <div class="tc-role">2x VC fund manager. Principal @ BCG. Analyst @ Bain. BA @ Harvard.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Pratyush R Tiwari</div>
+        <div class="tc-role">AI / Security Researcher &amp; Specialist. PhD @ Johns Hopkins.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Ciaran Hughes</div>
+        <div class="tc-role">Senior Researcher @ CERN, Fermi National Accelerator Lab. PhD Physics @ Cambridge.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Navendu Pottekatt</div>
+        <div class="tc-role">Engineering &amp; Research @ Apache Software, API7.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Augustinas Malinauskas</div>
+        <div class="tc-role">2x CTO. EF Fellow. PhD Physics @ Oxford. MA Math @ Cambridge.</div>
+      </div>
+      <div class="team-card">
+        <div class="tc-name">Andy Liu</div>
+        <div class="tc-role">Researcher @ Two Sigma, Google, DE Shaw. PhD Physics @ Stanford. SB Physics @ MIT.</div>
+      </div>
+    </div>
+
+    <div class="section-head">Advisor</div>
+    <div class="team-grid">
+      <div class="team-card advisor">
+        <div class="tc-tag">Advisor</div>
+        <div class="tc-name">Daniel Kang</div>
+        <div class="tc-role">Inventor of zkML (tensorplonk). CS Professor @ UIUC. Leads Bridgewater AIA Forecasting Lab.</div>
+      </div>
+    </div>
   </div>
 </section>
 
