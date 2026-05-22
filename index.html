@@ -55,8 +55,7 @@ a:hover{border-bottom-color:var(--accent)}
 .future-section h3.future-title{font-size:22px;font-weight:400;line-height:1.32;margin:0 0 14px;color:var(--text);max-width:880px}
 .future-section .slide-copy{margin-bottom:10px}
 .future-section .future-lead{font-size:15px;font-weight:500;line-height:1.6;color:var(--text);border-left:3px solid var(--accent);background:rgba(79,121,66,.1);padding:14px 18px;border-radius:0 6px 6px 0;margin:0 0 22px;max-width:880px}
-.pane{display:none}
-.pane.active{display:block}
+.pane{display:block;scroll-margin-top:60px}
 .container{max-width:1400px;margin:0 auto;padding:32px 40px 82px}
 .slide{min-height:calc(100vh - 72px);padding:28px 0 42px;border-bottom:1px solid rgba(214,211,209,.7);display:grid;align-content:start}
 .slide:last-child{border-bottom:0}
@@ -815,31 +814,48 @@ a:hover{border-bottom-color:var(--accent)}
 <script>
 const tabs = [...document.querySelectorAll('.tab')];
 const panes = [...document.querySelectorAll('.pane')];
-function alignToContent(){
-  const nav = document.querySelector('.tab-nav-wrap');
-  const main = document.querySelector('main');
-  const targetTop = Math.max(0, main.offsetTop - nav.offsetHeight);
-  window.scrollTo(0, targetTop);
-}
+
 function showTab(id){
-  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
-  panes.forEach(p => p.classList.toggle('active', p.id === 'pane-' + id));
-  if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
-  alignToContent();
-  requestAnimationFrame(alignToContent);
-  setTimeout(alignToContent, 120);
+  const pane = document.getElementById('pane-' + id);
+  if(!pane) return;
+  pane.scrollIntoView({behavior:'smooth', block:'start'});
 }
+
+let activeTabId = null;
+function setActiveTab(id){
+  if(id === activeTabId) return;
+  activeTabId = id;
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+  if(location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+}
+
+let ticking = false;
+function onScroll(){
+  if(ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    const navH = document.querySelector('.tab-nav-wrap').offsetHeight;
+    const threshold = navH + 80;
+    let current = panes[0];
+    for(const p of panes){
+      if(p.getBoundingClientRect().top <= threshold) current = p;
+      else break;
+    }
+    setActiveTab(current.id.replace('pane-',''));
+    ticking = false;
+  });
+}
+window.addEventListener('scroll', onScroll, {passive:true});
+
 const initial = location.hash.replace('#','');
-if (initial && document.getElementById('pane-' + initial)) showTab(initial);
-window.addEventListener('load', () => {
-  const id = location.hash.replace('#','');
-  if (id && document.getElementById('pane-' + id)) {
-    showTab(id);
-    setTimeout(alignToContent, 300);
-    setTimeout(alignToContent, 800);
-    setTimeout(alignToContent, 1500);
-  }
-});
+if (initial && document.getElementById('pane-' + initial)) {
+  window.addEventListener('load', () => {
+    document.getElementById('pane-' + initial).scrollIntoView({block:'start'});
+  });
+} else {
+  onScroll();
+}
+
 window.addEventListener('hashchange', () => {
   const id = location.hash.replace('#','');
   if (id && document.getElementById('pane-' + id)) showTab(id);
