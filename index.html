@@ -350,6 +350,229 @@ a:hover{border-bottom-color:var(--accent)}
   </div>
 </section>
 
+<section class="pane" id="pane-graph">
+  <div class="slide">
+    <div class="slide-kicker">State Evolution Models</div>
+    <h2 class="slide-title">Model Apollo as a multi-agent system, then improve each component iteratively.</h2>
+    <p class="slide-copy">Humans, deals, funds, systems of record, databases, macro factors, and open questions already interact. A live state-evolution model records what each object knows, how its state changes, which agents can act, and what questions should be asked next.</p>
+
+    <div class="system-map">
+      <div class="map-panel">
+        <div class="map-label">Current Apollo</div>
+        <div class="map-title">Human multi-agent system with static intervals.</div>
+        <p class="map-copy">People ask questions, pull systems, update memos, send messages, and meet. Much of the reasoning is unrecorded, episodic, and tied to reporting cycles.</p>
+        <div class="state-graph" aria-label="Current Apollo human multi-agent system">
+          <svg viewBox="0 0 620 360" role="img">
+            <line class="state-line" x1="112" y1="80" x2="310" y2="170"/>
+            <line class="state-line" x1="112" y1="80" x2="310" y2="82"/>
+            <line class="state-line" x1="112" y1="80" x2="500" y2="86"/>
+            <line class="state-line" x1="112" y1="245" x2="310" y2="170"/>
+            <line class="state-line" x1="112" y1="245" x2="310" y2="268"/>
+            <line class="state-line" x1="500" y1="86" x2="500" y2="245"/>
+            <line class="state-line" x1="310" y1="82" x2="500" y2="245"/>
+            <rect class="state-node state-node-human" x="38" y="44" width="148" height="72" rx="8"/>
+            <text class="state-text" x="112" y="74" text-anchor="middle">John Zito</text>
+            <text class="state-subtext" x="112" y="94" text-anchor="middle">wide action space</text>
+            <rect class="state-node state-node-human" x="38" y="210" width="148" height="72" rx="8"/>
+            <text class="state-text" x="112" y="240" text-anchor="middle">Deal teams</text>
+            <text class="state-subtext" x="112" y="260" text-anchor="middle">questions + judgment</text>
+            <rect class="state-node state-node-system" x="236" y="46" width="148" height="72" rx="8"/>
+            <text class="state-text" x="310" y="76" text-anchor="middle">Systems</text>
+            <text class="state-subtext" x="310" y="96" text-anchor="middle">databases + docs</text>
+            <rect class="state-node state-node-object" x="236" y="134" width="148" height="72" rx="8"/>
+            <text class="state-text" x="310" y="164" text-anchor="middle">Intel foundry</text>
+            <text class="state-subtext" x="310" y="184" text-anchor="middle">deal state evolves</text>
+            <rect class="state-node state-node-risk" x="236" y="232" width="148" height="72" rx="8"/>
+            <text class="state-text" x="310" y="262" text-anchor="middle">Macro market</text>
+            <text class="state-subtext" x="310" y="282" text-anchor="middle">rates, spreads, demand</text>
+            <rect class="state-node state-node-human" x="426" y="50" width="148" height="72" rx="8"/>
+            <text class="state-text" x="500" y="80" text-anchor="middle">Risk / legal / ACS</text>
+            <text class="state-subtext" x="500" y="100" text-anchor="middle">narrower action spaces</text>
+            <rect class="state-node state-node-question" x="426" y="210" width="148" height="72" rx="8"/>
+            <text class="state-text" x="500" y="240" text-anchor="middle">Open questions</text>
+            <text class="state-subtext" x="500" y="260" text-anchor="middle">often buried in process</text>
+            <text class="state-subtext" x="310" y="334" text-anchor="middle">Reasoning cadence: memo, IC, call, weekly review, ad hoc query</text>
+          </svg>
+        </div>
+        <div class="node-stack">
+          <div class="sys-node"><strong>Human agents</strong><span>Senior investors, deal teams, risk, legal, ACS, Athene, portfolio managers.</span></div>
+          <div class="sys-node"><strong>Stateful objects</strong><span>Deals, loans, collateral pools, borrowers, sectors, funds, liability blocks.</span></div>
+          <div class="sys-node"><strong>Systems of record</strong><span>Databases, document stores, memos, notes, marks, covenants, workflows.</span></div>
+          <div class="sys-node"><strong>Open questions</strong><span>Unresolved assumptions and latent variables that often live in people's heads.</span></div>
+        </div>
+        <div class="connector"><strong>Current constraint:</strong> Apollo has many agents already. The state is partially implicit and reasoning updates happen at low frequency.</div>
+      </div>
+
+      <div class="map-panel future">
+        <div class="map-label">With Axion</div>
+        <div class="map-title">Stateful objects with continuous agentic updates.</div>
+        <p class="map-copy">Axion models every human, deal, system, and factor as a node with state, permissions, evidence, action space, and dependencies. Reasoning can run continuously, on events, or when another agent asks for feedback.</p>
+        <div class="state-graph" aria-label="Apollo with Axion continuous state model">
+          <svg viewBox="0 0 620 360" role="img">
+            <line class="state-line-strong" x1="310" y1="172" x2="112" y2="72"/>
+            <line class="state-line-strong" x1="310" y1="172" x2="112" y2="240"/>
+            <line class="state-line-strong" x1="310" y1="172" x2="310" y2="62"/>
+            <line class="state-line-strong" x1="310" y1="172" x2="310" y2="278"/>
+            <line class="state-line-strong" x1="310" y1="172" x2="504" y2="76"/>
+            <line class="state-line-strong" x1="310" y1="172" x2="504" y2="240"/>
+            <circle cx="310" cy="172" r="62" fill="#f7fbf4" stroke="#4f7942" stroke-width="2"/>
+            <text class="state-text" x="310" y="166" text-anchor="middle">Apollo State</text>
+            <text class="state-subtext" x="310" y="186" text-anchor="middle">beliefs, forecasts, actions</text>
+            <rect class="state-node state-node-human" x="38" y="36" width="148" height="72" rx="8"/>
+            <text class="state-text" x="112" y="66" text-anchor="middle">John agent</text>
+            <text class="state-subtext" x="112" y="86" text-anchor="middle">asks at scale</text>
+            <rect class="state-node state-node-human" x="38" y="204" width="148" height="72" rx="8"/>
+            <text class="state-text" x="112" y="234" text-anchor="middle">Human agents</text>
+            <text class="state-subtext" x="112" y="254" text-anchor="middle">captured judgment</text>
+            <rect class="state-node state-node-system" x="236" y="26" width="148" height="72" rx="8"/>
+            <text class="state-text" x="310" y="56" text-anchor="middle">Data streams</text>
+            <text class="state-subtext" x="310" y="76" text-anchor="middle">public + internal</text>
+            <rect class="state-node state-node-object" x="236" y="242" width="148" height="72" rx="8"/>
+            <text class="state-text" x="310" y="272" text-anchor="middle">Asset substates</text>
+            <text class="state-subtext" x="310" y="292" text-anchor="middle">deal, borrower, fund</text>
+            <rect class="state-node state-node-question" x="430" y="40" width="148" height="72" rx="8"/>
+            <text class="state-text" x="504" y="70" text-anchor="middle">Question agents</text>
+            <text class="state-subtext" x="504" y="90" text-anchor="middle">latent variables</text>
+            <rect class="state-node state-node-risk" x="430" y="204" width="148" height="72" rx="8"/>
+            <text class="state-text" x="504" y="234" text-anchor="middle">Action agents</text>
+            <text class="state-subtext" x="504" y="254" text-anchor="middle">route, decide, learn</text>
+            <text class="state-subtext" x="310" y="334" text-anchor="middle">Reasoning cadence: event-driven, scheduled, agent-to-agent, and manager query</text>
+          </svg>
+        </div>
+        <div class="axion-core">
+          <div class="core-title">Apollo State Layer</div>
+          <div class="core-copy">Canonical objects for loans, borrowers, sponsors, collateral pools, covenants, funds, liability blocks, buyers, managers, evidence, forecasts, latent variables, open questions, and outcomes.</div>
+        </div>
+        <div class="layer-grid">
+          <div class="layer"><b>Ingestion Agents</b><span>Continuously absorb public world data and internal calls, meetings, notes, documents, and system data.</span></div>
+          <div class="layer"><b>Asset Substate Agents</b><span>Each loan, borrower, pool, covenant, fund, and liability block has a monitored substate.</span></div>
+          <div class="layer"><b>Latent Question Agents</b><span>Open questions and forecasting variables persist as agents until evidence resolves them.</span></div>
+          <div class="layer"><b>ML Risk Forecasters</b><span>PD, LGD, collateral, liquidity, liability fit, and buyer appetite models update every layer.</span></div>
+          <div class="layer"><b>Decision Agents</b><span>Origination, manager-extension, propagation, liquidity, and review agents translate state into action.</span></div>
+          <div class="layer"><b>Posttraining Loop</b><span>Resolved forecasts, overrides, misses, and realized outcomes become Apollo-specific training data.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-head">Object Types And Action Spaces</div>
+    <div class="action-space">
+      <div class="action-card"><b>Human agent</b><span>Wide action space: ask questions, challenge assumptions, approve, escalate, call counterparties, route decisions, override models.</span></div>
+      <div class="action-card"><b>Deal or credit object</b><span>Narrow action space: state evolves through borrower performance, covenants, pricing, market context, and human decisions around it.</span></div>
+      <div class="action-card"><b>System or database</b><span>Evidence source: contains facts, documents, marks, positions, covenants, notes, approvals, and historical decisions.</span></div>
+      <div class="action-card"><b>Latent question</b><span>Agentic object: persists until resolved, asks for evidence, updates probability, and can trigger human review when action value is high.</span></div>
+    </div>
+
+    <div class="section-head">Custom Workflow: John Zito Agent</div>
+    <div class="grid-4">
+      <div class="emboss emboss-accent"><div class="e-kicker">01 Frame</div><div class="e-headline">What decision is John trying to make?</div><div class="e-body">Convert a broad concern into action choices, timing, constraints, and the evidence that would change the decision.</div></div>
+      <div class="emboss emboss-navy"><div class="e-kicker">02 Ask</div><div class="e-headline">Generate the next best questions.</div><div class="e-body">Ping asset agents, sector agents, ACS agents, Athene agents, risk/legal agents, and human owners only when their response has decision value.</div></div>
+      <div class="emboss emboss-amber"><div class="e-kicker">03 Press</div><div class="e-headline">Be annoying at scale with discipline.</div><div class="e-body">Track unanswered questions, stale assumptions, dissenting views, and evidence gaps until the decision is ready or escalation is needed.</div></div>
+      <div class="emboss emboss-cyan"><div class="e-kicker">04 Decide</div><div class="e-headline">Return a reviewable answer.</div><div class="e-body">Show recommendation, confidence, sources, unresolved questions, who disagrees, and what would change the answer.</div></div>
+    </div>
+
+    <div class="section-head">How State Evolution Compounds</div>
+    <div class="flow-loop">
+      <div class="loop-step"><div class="loop-num">01</div><div class="loop-title">Signal</div><div class="loop-copy">Borrower report, collateral tape, meeting note, market move, news event, rating action, or secondary bid.</div></div>
+      <div class="loop-step"><div class="loop-num">02</div><div class="loop-title">Substate Update</div><div class="loop-copy">Evidence updates the relevant asset, liability, fund, buyer, or open-question substate.</div></div>
+      <div class="loop-step"><div class="loop-num">03</div><div class="loop-title">Model Forecast</div><div class="loop-copy">Risk models update PD, LGD, liquidity, collateral, liability fit, and action probabilities.</div></div>
+      <div class="loop-step"><div class="loop-num">04</div><div class="loop-title">Propagation</div><div class="loop-copy">Affected exposures, sectors, covenants, funds, liabilities, and buyers are recomputed.</div></div>
+      <div class="loop-step"><div class="loop-num">05</div><div class="loop-title">Action</div><div class="loop-copy">Reprice, amend, hedge, syndicate, sell, allocate, decline, or ask for deeper diligence.</div></div>
+      <div class="loop-step"><div class="loop-num">06</div><div class="loop-title">Learning</div><div class="loop-copy">Outcomes, overrides, and resolved questions improve posttraining and future triage.</div></div>
+    </div>
+
+    <div class="section-head">Questions Apollo Should Be Able To Ask Axion</div>
+    <div class="insight-grid wide">
+      <div class="insight-card"><div class="i-k">Deal Decision</div><div class="i-h">Should this deal go through?</div><div class="i-p">The answer cites precedent, risk models, missing diligence, expected return, buyer fit, liability fit, and dissenting agents.</div></div>
+      <div class="insight-card"><div class="i-k">Origination</div><div class="i-h">What deals should Apollo pursue next?</div><div class="i-p">The system identifies gaps where Apollo has edge, buyer demand, portfolio capacity, and favorable risk-adjusted pricing.</div></div>
+      <div class="insight-card"><div class="i-k">Book Health</div><div class="i-h">What is the health of the entire book?</div><div class="i-p">Axion summarizes exposures, degrading substates, resolved and unresolved questions, liquidity, ALM fit, and action queues.</div></div>
+      <div class="insight-card"><div class="i-k">Overnight Change</div><div class="i-h">What changed since yesterday?</div><div class="i-p">Agents report only material belief moves, evidence, affected assets, required human review, and recommended actions.</div></div>
+      <div class="insight-card"><div class="i-k">Belief Propagation</div><div class="i-h">If I believe rates go to 7%, what should we change today?</div><div class="i-p">Axion maps the shock through floating-rate exposure, refi walls, borrower coverage, asset marks, Athene ALM, fund liquidity, hedges, and ACS transfer opportunities.</div></div>
+      <div class="insight-card"><div class="i-k">Portfolio Action</div><div class="i-h">Which positions become mis-owned under that scenario?</div><div class="i-p">Axion identifies assets that should move from hold to syndicate, hedge, amend, sell, resize, reprice, or transfer to a different capital pool.</div></div>
+      <div class="insight-card"><div class="i-k">Latent Questions</div><div class="i-h">Which assumptions matter most if my macro view is right?</div><div class="i-p">Axion ranks the open questions whose answers would most change portfolio action: rate sensitivity, sponsor support, liquidity runway, and buyer depth.</div></div>
+      <div class="insight-card"><div class="i-k">Counterfactual</div><div class="i-h">What would we wish we had done six months earlier?</div><div class="i-p">Axion backtests the scenario against current exposures and recommends actions that preserve optionality before the market fully reprices.</div></div>
+      <div class="insight-card"><div class="i-k">Manager Routing</div><div class="i-h">Who needs to review this now?</div><div class="i-p">Axion routes each propagated change to the right credit, ABF, Athene, ACS, legal, risk, or portfolio manager with the evidence package attached.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pane" id="pane-roadmap">
+  <div class="slide">
+    <div class="slide-kicker">Roadmap</div>
+    <h2 class="slide-title">Build the operating loop first: Axion, variants, posttraining, continuous learning.</h2>
+    <p class="slide-copy">The first objective is a harness that maintains Apollo State, generates trusted answers, compares model variants, and creates the resolved data needed for posttraining. Model training matters because a model is a compression of Apollo's internal knowledge; the system should earn that training step with clean labels, resolved outcomes, and measurable evaluation.</p>
+    <div class="arch">
+      <div class="arch-step"><div class="arch-num">01</div><div class="arch-title">Build Axion</div><div class="arch-body">Multiagent system with Apollo State, asset substates, latent question agents, evidence provenance, and human review.</div></div>
+      <div class="arch-step"><div class="arch-num">02</div><div class="arch-title">Run Variants</div><div class="arch-body">Test many model combinations for each agent and forecast task until performance, calibration, and cost are known.</div></div>
+      <div class="arch-step"><div class="arch-num">03</div><div class="arch-title">Open-Source Control</div><div class="arch-body">Once the best recipes are proven, distill and deploy open-source models inside Apollo's security and governance boundary.</div></div>
+      <div class="arch-step"><div class="arch-num">04</div><div class="arch-title">Posttrain In Harness</div><div class="arch-body">Models learn from resolved forecasts, overrides, meeting outcomes, decision traces, errors, and realized credit history.</div></div>
+      <div class="arch-step"><div class="arch-num">05</div><div class="arch-title">Continuous Learning</div><div class="arch-body">Move toward continual posttraining and eventually continuous pretraining as the corpus, labels, privacy gates, and evals mature.</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="emboss emboss-accent"><div class="e-kicker">Pilot Wedge</div><div class="e-headline">One vertical, one existing book, one origination channel, one senior sponsor.</div><div class="e-body">Target 500 to 2,000 credit objects, 100+ forecast objects, daily insight queue, weekly calibration review, new-deal triage, and a go/expand decision at the end of the pilot.</div></div>
+      <div class="emboss emboss-navy"><div class="e-kicker">Best First Vertical</div><div class="e-headline">Start where private data, events, and outcomes are dense.</div><div class="e-body">ABF or direct-lending surveillance are strong first wedges. Scope Athene-liability-aware allocation after the first credit state layer exists.</div></div>
+    </div>
+    <div class="grid-2">
+      <div class="emboss emboss-amber"><div class="e-kicker">Training Cadence</div><div class="e-headline">Train on schedule and on regime change.</div><div class="e-body">Training is expensive and then amortized over inference calls. Apollo should update models when enough new information has accumulated, when outcomes have resolved, or when the world enters a new regime.</div></div>
+      <div class="emboss emboss-cyan"><div class="e-kicker">Continuous Learning</div><div class="e-headline">Each component should improve from use.</div><div class="e-body">Human agents already learn from calls, decisions, mistakes, and outcomes. Axion applies that same function to assets, funds, workflows, forecasts, and open questions.</div></div>
+    </div>
+    <table class="table">
+      <thead><tr><th>Step</th><th>Deliverable</th><th>Acceptance Criteria</th><th>Why It Matters</th></tr></thead>
+      <tbody>
+        <tr><td>01</td><td>Ontology and data access map.</td><td>Object model approved; source systems and permissions defined.</td><td>Keeps the build focused on decision objects, permissions, and state.</td></tr>
+        <tr><td>02</td><td>Live surveillance prototype.</td><td>Daily drift queue, evidence provenance, human review, affected-exposure ranking.</td><td>Shows operational value before training claims.</td></tr>
+        <tr><td>03</td><td>Origination triage plus propagation.</td><td>New deal mapped to Apollo precedents, current market state, missing diligence, price/risk range.</td><td>Connects existing book intelligence to future lending.</td></tr>
+        <tr><td>04</td><td>Calibration and expansion decision.</td><td>False positives, missed risks, forecast movement, and human overrides reviewed.</td><td>Creates the data substrate for posttraining.</td></tr>
+      </tbody>
+    </table>
+    <div class="future-section">
+      <div class="section-head">Future of Private Credit</div>
+      <h3 class="future-title">What does the future of private credit &mdash; and capital allocation for liquidity gaps in general &mdash; look like?</h3>
+      <p class="future-lead">The end state is an automated credit facility, open to requests from anywhere in the world. A request arrives; the facility proposes the right deal. This expands Apollo&rsquo;s TAM and positions Apollo to author the first open credit facility protocol between agents.</p>
+
+      <div class="section-head">How a deal closes between two agents</div>
+      <div class="grid-2">
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">Request</div>
+          <div class="e-headline">The company&rsquo;s agent submits the loan.</div>
+          <div class="e-body">A company needs capital. Its agent representative sends the request to Apollo&rsquo;s agent with context, documents, desired terms, and timing.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">Response</div>
+          <div class="e-headline">Apollo&rsquo;s agent reviews the source and responds instantly.</div>
+          <div class="e-body">Apollo&rsquo;s agent verifies the request, maps it against the live book and capital fit, and returns a decision &mdash; pursue, decline, revise, syndicate, or restructure &mdash; without waiting for a human cycle.</div>
+        </div>
+      </div>
+
+      <div class="section-head">In the limit, the more efficient system wins</div>
+      <p class="slide-copy">More efficient means faster, better outcomes, better risk pricing, better reasoning. Apollo can compound all four, in stages. The best private credit operator will be an automated system that monitors the world continuously, mines it for capital-routing signal at high pace, and fills liquidity gaps before slower operators see them. This is what it takes to become the Jane Street of private credit.</p>
+
+      <div class="section-head">The volume forecast &mdash; Jevon&rsquo;s paradox for capital markets</div>
+      <p class="slide-copy">One big forecast underlies everything above:</p>
+      <div class="grid-2">
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">01 / Demand</div>
+          <div class="e-headline">More intelligent systems means more actors needing capital.</div>
+          <div class="e-body">As the number of intelligent systems in the world grows, the number of actors that require capital to act grows with them. Net loans grow, loan volumes grow, and the rate of origination and repayment accelerates. The long-run data on total credit supports this trajectory.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">02 / Volume</div>
+          <div class="e-headline">Lower margin per loan is fine if volume grows faster.</div>
+          <div class="e-body">This is Jevon&rsquo;s paradox applied to capital flows. As credit becomes easier to issue, total credit volume expands beyond what any margin compression can offset. Apollo can be a larger, more profitable business at a lower per-loan margin.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">03 / Edge</div>
+          <div class="e-headline">The durable edge is risk, speed, and gap-filling.</div>
+          <div class="e-body">Apollo wins the larger pool by holding edge in risk assessment, speed of liquidity delivery, and the ability to fill gaps slower operators miss. Superior risk assessment at scale is the moat.</div>
+        </div>
+        <div class="emboss emboss-accent">
+          <div class="e-kicker">04 / Bottleneck</div>
+          <div class="e-headline">The remaining bottleneck is human and physical.</div>
+          <div class="e-body">Once monitoring and pricing are automated, the ultimate bottleneck becomes human decision-making and execution risk &mdash; the interface with the physical world. Apollo&rsquo;s job in this future is to keep that interface small and well-instrumented.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="pane" id="pane-system">
   <div class="slide">
     <div class="slide-kicker">Axion Surface</div>
@@ -542,229 +765,7 @@ a:hover{border-bottom-color:var(--accent)}
   </div>
 </section>
 
-<section class="pane" id="pane-roadmap">
-  <div class="slide">
-    <div class="slide-kicker">Roadmap</div>
-    <h2 class="slide-title">Build the operating loop first: Axion, variants, posttraining, continuous learning.</h2>
-    <p class="slide-copy">The first objective is a harness that maintains Apollo State, generates trusted answers, compares model variants, and creates the resolved data needed for posttraining. Model training matters because a model is a compression of Apollo's internal knowledge; the system should earn that training step with clean labels, resolved outcomes, and measurable evaluation.</p>
-    <div class="arch">
-      <div class="arch-step"><div class="arch-num">01</div><div class="arch-title">Build Axion</div><div class="arch-body">Multiagent system with Apollo State, asset substates, latent question agents, evidence provenance, and human review.</div></div>
-      <div class="arch-step"><div class="arch-num">02</div><div class="arch-title">Run Variants</div><div class="arch-body">Test many model combinations for each agent and forecast task until performance, calibration, and cost are known.</div></div>
-      <div class="arch-step"><div class="arch-num">03</div><div class="arch-title">Open-Source Control</div><div class="arch-body">Once the best recipes are proven, distill and deploy open-source models inside Apollo's security and governance boundary.</div></div>
-      <div class="arch-step"><div class="arch-num">04</div><div class="arch-title">Posttrain In Harness</div><div class="arch-body">Models learn from resolved forecasts, overrides, meeting outcomes, decision traces, errors, and realized credit history.</div></div>
-      <div class="arch-step"><div class="arch-num">05</div><div class="arch-title">Continuous Learning</div><div class="arch-body">Move toward continual posttraining and eventually continuous pretraining as the corpus, labels, privacy gates, and evals mature.</div></div>
-    </div>
-    <div class="grid-2">
-      <div class="emboss emboss-accent"><div class="e-kicker">Pilot Wedge</div><div class="e-headline">One vertical, one existing book, one origination channel, one senior sponsor.</div><div class="e-body">Target 500 to 2,000 credit objects, 100+ forecast objects, daily insight queue, weekly calibration review, new-deal triage, and a go/expand decision at the end of the pilot.</div></div>
-      <div class="emboss emboss-navy"><div class="e-kicker">Best First Vertical</div><div class="e-headline">Start where private data, events, and outcomes are dense.</div><div class="e-body">ABF or direct-lending surveillance are strong first wedges. Scope Athene-liability-aware allocation after the first credit state layer exists.</div></div>
-    </div>
-    <div class="grid-2">
-      <div class="emboss emboss-amber"><div class="e-kicker">Training Cadence</div><div class="e-headline">Train on schedule and on regime change.</div><div class="e-body">Training is expensive and then amortized over inference calls. Apollo should update models when enough new information has accumulated, when outcomes have resolved, or when the world enters a new regime.</div></div>
-      <div class="emboss emboss-cyan"><div class="e-kicker">Continuous Learning</div><div class="e-headline">Each component should improve from use.</div><div class="e-body">Human agents already learn from calls, decisions, mistakes, and outcomes. Axion applies that same function to assets, funds, workflows, forecasts, and open questions.</div></div>
-    </div>
-    <table class="table">
-      <thead><tr><th>Step</th><th>Deliverable</th><th>Acceptance Criteria</th><th>Why It Matters</th></tr></thead>
-      <tbody>
-        <tr><td>01</td><td>Ontology and data access map.</td><td>Object model approved; source systems and permissions defined.</td><td>Keeps the build focused on decision objects, permissions, and state.</td></tr>
-        <tr><td>02</td><td>Live surveillance prototype.</td><td>Daily drift queue, evidence provenance, human review, affected-exposure ranking.</td><td>Shows operational value before training claims.</td></tr>
-        <tr><td>03</td><td>Origination triage plus propagation.</td><td>New deal mapped to Apollo precedents, current market state, missing diligence, price/risk range.</td><td>Connects existing book intelligence to future lending.</td></tr>
-        <tr><td>04</td><td>Calibration and expansion decision.</td><td>False positives, missed risks, forecast movement, and human overrides reviewed.</td><td>Creates the data substrate for posttraining.</td></tr>
-      </tbody>
-    </table>
-    <div class="future-section">
-      <div class="section-head">Future of Private Credit</div>
-      <h3 class="future-title">What does the future of private credit &mdash; and capital allocation for liquidity gaps in general &mdash; look like?</h3>
-      <p class="future-lead">The end state is an automated credit facility, open to requests from anywhere in the world. A request arrives; the facility proposes the right deal. This expands Apollo&rsquo;s TAM and positions Apollo to author the first open credit facility protocol between agents.</p>
 
-      <div class="section-head">How a deal closes between two agents</div>
-      <div class="grid-2">
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">Request</div>
-          <div class="e-headline">The company&rsquo;s agent submits the loan.</div>
-          <div class="e-body">A company needs capital. Its agent representative sends the request to Apollo&rsquo;s agent with context, documents, desired terms, and timing.</div>
-        </div>
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">Response</div>
-          <div class="e-headline">Apollo&rsquo;s agent reviews the source and responds instantly.</div>
-          <div class="e-body">Apollo&rsquo;s agent verifies the request, maps it against the live book and capital fit, and returns a decision &mdash; pursue, decline, revise, syndicate, or restructure &mdash; without waiting for a human cycle.</div>
-        </div>
-      </div>
-
-      <div class="section-head">In the limit, the more efficient system wins</div>
-      <p class="slide-copy">More efficient means faster, better outcomes, better risk pricing, better reasoning. Apollo can compound all four, in stages. The best private credit operator will be an automated system that monitors the world continuously, mines it for capital-routing signal at high pace, and fills liquidity gaps before slower operators see them. This is what it takes to become the Jane Street of private credit.</p>
-
-      <div class="section-head">The volume forecast &mdash; Jevon&rsquo;s paradox for capital markets</div>
-      <p class="slide-copy">One big forecast underlies everything above:</p>
-      <div class="grid-2">
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">01 / Demand</div>
-          <div class="e-headline">More intelligent systems means more actors needing capital.</div>
-          <div class="e-body">As the number of intelligent systems in the world grows, the number of actors that require capital to act grows with them. Net loans grow, loan volumes grow, and the rate of origination and repayment accelerates. The long-run data on total credit supports this trajectory.</div>
-        </div>
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">02 / Volume</div>
-          <div class="e-headline">Lower margin per loan is fine if volume grows faster.</div>
-          <div class="e-body">This is Jevon&rsquo;s paradox applied to capital flows. As credit becomes easier to issue, total credit volume expands beyond what any margin compression can offset. Apollo can be a larger, more profitable business at a lower per-loan margin.</div>
-        </div>
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">03 / Edge</div>
-          <div class="e-headline">The durable edge is risk, speed, and gap-filling.</div>
-          <div class="e-body">Apollo wins the larger pool by holding edge in risk assessment, speed of liquidity delivery, and the ability to fill gaps slower operators miss. Superior risk assessment at scale is the moat.</div>
-        </div>
-        <div class="emboss emboss-accent">
-          <div class="e-kicker">04 / Bottleneck</div>
-          <div class="e-headline">The remaining bottleneck is human and physical.</div>
-          <div class="e-body">Once monitoring and pricing are automated, the ultimate bottleneck becomes human decision-making and execution risk &mdash; the interface with the physical world. Apollo&rsquo;s job in this future is to keep that interface small and well-instrumented.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pane" id="pane-graph">
-  <div class="slide">
-    <div class="slide-kicker">State Evolution Models</div>
-    <h2 class="slide-title">Model Apollo as a multi-agent system, then improve each component iteratively.</h2>
-    <p class="slide-copy">Humans, deals, funds, systems of record, databases, macro factors, and open questions already interact. A live state-evolution model records what each object knows, how its state changes, which agents can act, and what questions should be asked next.</p>
-
-    <div class="system-map">
-      <div class="map-panel">
-        <div class="map-label">Current Apollo</div>
-        <div class="map-title">Human multi-agent system with static intervals.</div>
-        <p class="map-copy">People ask questions, pull systems, update memos, send messages, and meet. Much of the reasoning is unrecorded, episodic, and tied to reporting cycles.</p>
-        <div class="state-graph" aria-label="Current Apollo human multi-agent system">
-          <svg viewBox="0 0 620 360" role="img">
-            <line class="state-line" x1="112" y1="80" x2="310" y2="170"/>
-            <line class="state-line" x1="112" y1="80" x2="310" y2="82"/>
-            <line class="state-line" x1="112" y1="80" x2="500" y2="86"/>
-            <line class="state-line" x1="112" y1="245" x2="310" y2="170"/>
-            <line class="state-line" x1="112" y1="245" x2="310" y2="268"/>
-            <line class="state-line" x1="500" y1="86" x2="500" y2="245"/>
-            <line class="state-line" x1="310" y1="82" x2="500" y2="245"/>
-            <rect class="state-node state-node-human" x="38" y="44" width="148" height="72" rx="8"/>
-            <text class="state-text" x="112" y="74" text-anchor="middle">John Zito</text>
-            <text class="state-subtext" x="112" y="94" text-anchor="middle">wide action space</text>
-            <rect class="state-node state-node-human" x="38" y="210" width="148" height="72" rx="8"/>
-            <text class="state-text" x="112" y="240" text-anchor="middle">Deal teams</text>
-            <text class="state-subtext" x="112" y="260" text-anchor="middle">questions + judgment</text>
-            <rect class="state-node state-node-system" x="236" y="46" width="148" height="72" rx="8"/>
-            <text class="state-text" x="310" y="76" text-anchor="middle">Systems</text>
-            <text class="state-subtext" x="310" y="96" text-anchor="middle">databases + docs</text>
-            <rect class="state-node state-node-object" x="236" y="134" width="148" height="72" rx="8"/>
-            <text class="state-text" x="310" y="164" text-anchor="middle">Intel foundry</text>
-            <text class="state-subtext" x="310" y="184" text-anchor="middle">deal state evolves</text>
-            <rect class="state-node state-node-risk" x="236" y="232" width="148" height="72" rx="8"/>
-            <text class="state-text" x="310" y="262" text-anchor="middle">Macro market</text>
-            <text class="state-subtext" x="310" y="282" text-anchor="middle">rates, spreads, demand</text>
-            <rect class="state-node state-node-human" x="426" y="50" width="148" height="72" rx="8"/>
-            <text class="state-text" x="500" y="80" text-anchor="middle">Risk / legal / ACS</text>
-            <text class="state-subtext" x="500" y="100" text-anchor="middle">narrower action spaces</text>
-            <rect class="state-node state-node-question" x="426" y="210" width="148" height="72" rx="8"/>
-            <text class="state-text" x="500" y="240" text-anchor="middle">Open questions</text>
-            <text class="state-subtext" x="500" y="260" text-anchor="middle">often buried in process</text>
-            <text class="state-subtext" x="310" y="334" text-anchor="middle">Reasoning cadence: memo, IC, call, weekly review, ad hoc query</text>
-          </svg>
-        </div>
-        <div class="node-stack">
-          <div class="sys-node"><strong>Human agents</strong><span>Senior investors, deal teams, risk, legal, ACS, Athene, portfolio managers.</span></div>
-          <div class="sys-node"><strong>Stateful objects</strong><span>Deals, loans, collateral pools, borrowers, sectors, funds, liability blocks.</span></div>
-          <div class="sys-node"><strong>Systems of record</strong><span>Databases, document stores, memos, notes, marks, covenants, workflows.</span></div>
-          <div class="sys-node"><strong>Open questions</strong><span>Unresolved assumptions and latent variables that often live in people's heads.</span></div>
-        </div>
-        <div class="connector"><strong>Current constraint:</strong> Apollo has many agents already. The state is partially implicit and reasoning updates happen at low frequency.</div>
-      </div>
-
-      <div class="map-panel future">
-        <div class="map-label">With Axion</div>
-        <div class="map-title">Stateful objects with continuous agentic updates.</div>
-        <p class="map-copy">Axion models every human, deal, system, and factor as a node with state, permissions, evidence, action space, and dependencies. Reasoning can run continuously, on events, or when another agent asks for feedback.</p>
-        <div class="state-graph" aria-label="Apollo with Axion continuous state model">
-          <svg viewBox="0 0 620 360" role="img">
-            <line class="state-line-strong" x1="310" y1="172" x2="112" y2="72"/>
-            <line class="state-line-strong" x1="310" y1="172" x2="112" y2="240"/>
-            <line class="state-line-strong" x1="310" y1="172" x2="310" y2="62"/>
-            <line class="state-line-strong" x1="310" y1="172" x2="310" y2="278"/>
-            <line class="state-line-strong" x1="310" y1="172" x2="504" y2="76"/>
-            <line class="state-line-strong" x1="310" y1="172" x2="504" y2="240"/>
-            <circle cx="310" cy="172" r="62" fill="#f7fbf4" stroke="#4f7942" stroke-width="2"/>
-            <text class="state-text" x="310" y="166" text-anchor="middle">Apollo State</text>
-            <text class="state-subtext" x="310" y="186" text-anchor="middle">beliefs, forecasts, actions</text>
-            <rect class="state-node state-node-human" x="38" y="36" width="148" height="72" rx="8"/>
-            <text class="state-text" x="112" y="66" text-anchor="middle">John agent</text>
-            <text class="state-subtext" x="112" y="86" text-anchor="middle">asks at scale</text>
-            <rect class="state-node state-node-human" x="38" y="204" width="148" height="72" rx="8"/>
-            <text class="state-text" x="112" y="234" text-anchor="middle">Human agents</text>
-            <text class="state-subtext" x="112" y="254" text-anchor="middle">captured judgment</text>
-            <rect class="state-node state-node-system" x="236" y="26" width="148" height="72" rx="8"/>
-            <text class="state-text" x="310" y="56" text-anchor="middle">Data streams</text>
-            <text class="state-subtext" x="310" y="76" text-anchor="middle">public + internal</text>
-            <rect class="state-node state-node-object" x="236" y="242" width="148" height="72" rx="8"/>
-            <text class="state-text" x="310" y="272" text-anchor="middle">Asset substates</text>
-            <text class="state-subtext" x="310" y="292" text-anchor="middle">deal, borrower, fund</text>
-            <rect class="state-node state-node-question" x="430" y="40" width="148" height="72" rx="8"/>
-            <text class="state-text" x="504" y="70" text-anchor="middle">Question agents</text>
-            <text class="state-subtext" x="504" y="90" text-anchor="middle">latent variables</text>
-            <rect class="state-node state-node-risk" x="430" y="204" width="148" height="72" rx="8"/>
-            <text class="state-text" x="504" y="234" text-anchor="middle">Action agents</text>
-            <text class="state-subtext" x="504" y="254" text-anchor="middle">route, decide, learn</text>
-            <text class="state-subtext" x="310" y="334" text-anchor="middle">Reasoning cadence: event-driven, scheduled, agent-to-agent, and manager query</text>
-          </svg>
-        </div>
-        <div class="axion-core">
-          <div class="core-title">Apollo State Layer</div>
-          <div class="core-copy">Canonical objects for loans, borrowers, sponsors, collateral pools, covenants, funds, liability blocks, buyers, managers, evidence, forecasts, latent variables, open questions, and outcomes.</div>
-        </div>
-        <div class="layer-grid">
-          <div class="layer"><b>Ingestion Agents</b><span>Continuously absorb public world data and internal calls, meetings, notes, documents, and system data.</span></div>
-          <div class="layer"><b>Asset Substate Agents</b><span>Each loan, borrower, pool, covenant, fund, and liability block has a monitored substate.</span></div>
-          <div class="layer"><b>Latent Question Agents</b><span>Open questions and forecasting variables persist as agents until evidence resolves them.</span></div>
-          <div class="layer"><b>ML Risk Forecasters</b><span>PD, LGD, collateral, liquidity, liability fit, and buyer appetite models update every layer.</span></div>
-          <div class="layer"><b>Decision Agents</b><span>Origination, manager-extension, propagation, liquidity, and review agents translate state into action.</span></div>
-          <div class="layer"><b>Posttraining Loop</b><span>Resolved forecasts, overrides, misses, and realized outcomes become Apollo-specific training data.</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-head">Object Types And Action Spaces</div>
-    <div class="action-space">
-      <div class="action-card"><b>Human agent</b><span>Wide action space: ask questions, challenge assumptions, approve, escalate, call counterparties, route decisions, override models.</span></div>
-      <div class="action-card"><b>Deal or credit object</b><span>Narrow action space: state evolves through borrower performance, covenants, pricing, market context, and human decisions around it.</span></div>
-      <div class="action-card"><b>System or database</b><span>Evidence source: contains facts, documents, marks, positions, covenants, notes, approvals, and historical decisions.</span></div>
-      <div class="action-card"><b>Latent question</b><span>Agentic object: persists until resolved, asks for evidence, updates probability, and can trigger human review when action value is high.</span></div>
-    </div>
-
-    <div class="section-head">Custom Workflow: John Zito Agent</div>
-    <div class="grid-4">
-      <div class="emboss emboss-accent"><div class="e-kicker">01 Frame</div><div class="e-headline">What decision is John trying to make?</div><div class="e-body">Convert a broad concern into action choices, timing, constraints, and the evidence that would change the decision.</div></div>
-      <div class="emboss emboss-navy"><div class="e-kicker">02 Ask</div><div class="e-headline">Generate the next best questions.</div><div class="e-body">Ping asset agents, sector agents, ACS agents, Athene agents, risk/legal agents, and human owners only when their response has decision value.</div></div>
-      <div class="emboss emboss-amber"><div class="e-kicker">03 Press</div><div class="e-headline">Be annoying at scale with discipline.</div><div class="e-body">Track unanswered questions, stale assumptions, dissenting views, and evidence gaps until the decision is ready or escalation is needed.</div></div>
-      <div class="emboss emboss-cyan"><div class="e-kicker">04 Decide</div><div class="e-headline">Return a reviewable answer.</div><div class="e-body">Show recommendation, confidence, sources, unresolved questions, who disagrees, and what would change the answer.</div></div>
-    </div>
-
-    <div class="section-head">How State Evolution Compounds</div>
-    <div class="flow-loop">
-      <div class="loop-step"><div class="loop-num">01</div><div class="loop-title">Signal</div><div class="loop-copy">Borrower report, collateral tape, meeting note, market move, news event, rating action, or secondary bid.</div></div>
-      <div class="loop-step"><div class="loop-num">02</div><div class="loop-title">Substate Update</div><div class="loop-copy">Evidence updates the relevant asset, liability, fund, buyer, or open-question substate.</div></div>
-      <div class="loop-step"><div class="loop-num">03</div><div class="loop-title">Model Forecast</div><div class="loop-copy">Risk models update PD, LGD, liquidity, collateral, liability fit, and action probabilities.</div></div>
-      <div class="loop-step"><div class="loop-num">04</div><div class="loop-title">Propagation</div><div class="loop-copy">Affected exposures, sectors, covenants, funds, liabilities, and buyers are recomputed.</div></div>
-      <div class="loop-step"><div class="loop-num">05</div><div class="loop-title">Action</div><div class="loop-copy">Reprice, amend, hedge, syndicate, sell, allocate, decline, or ask for deeper diligence.</div></div>
-      <div class="loop-step"><div class="loop-num">06</div><div class="loop-title">Learning</div><div class="loop-copy">Outcomes, overrides, and resolved questions improve posttraining and future triage.</div></div>
-    </div>
-
-    <div class="section-head">Questions Apollo Should Be Able To Ask Axion</div>
-    <div class="insight-grid wide">
-      <div class="insight-card"><div class="i-k">Deal Decision</div><div class="i-h">Should this deal go through?</div><div class="i-p">The answer cites precedent, risk models, missing diligence, expected return, buyer fit, liability fit, and dissenting agents.</div></div>
-      <div class="insight-card"><div class="i-k">Origination</div><div class="i-h">What deals should Apollo pursue next?</div><div class="i-p">The system identifies gaps where Apollo has edge, buyer demand, portfolio capacity, and favorable risk-adjusted pricing.</div></div>
-      <div class="insight-card"><div class="i-k">Book Health</div><div class="i-h">What is the health of the entire book?</div><div class="i-p">Axion summarizes exposures, degrading substates, resolved and unresolved questions, liquidity, ALM fit, and action queues.</div></div>
-      <div class="insight-card"><div class="i-k">Overnight Change</div><div class="i-h">What changed since yesterday?</div><div class="i-p">Agents report only material belief moves, evidence, affected assets, required human review, and recommended actions.</div></div>
-      <div class="insight-card"><div class="i-k">Belief Propagation</div><div class="i-h">If I believe rates go to 7%, what should we change today?</div><div class="i-p">Axion maps the shock through floating-rate exposure, refi walls, borrower coverage, asset marks, Athene ALM, fund liquidity, hedges, and ACS transfer opportunities.</div></div>
-      <div class="insight-card"><div class="i-k">Portfolio Action</div><div class="i-h">Which positions become mis-owned under that scenario?</div><div class="i-p">Axion identifies assets that should move from hold to syndicate, hedge, amend, sell, resize, reprice, or transfer to a different capital pool.</div></div>
-      <div class="insight-card"><div class="i-k">Latent Questions</div><div class="i-h">Which assumptions matter most if my macro view is right?</div><div class="i-p">Axion ranks the open questions whose answers would most change portfolio action: rate sensitivity, sponsor support, liquidity runway, and buyer depth.</div></div>
-      <div class="insight-card"><div class="i-k">Counterfactual</div><div class="i-h">What would we wish we had done six months earlier?</div><div class="i-p">Axion backtests the scenario against current exposures and recommends actions that preserve optionality before the market fully reprices.</div></div>
-      <div class="insight-card"><div class="i-k">Manager Routing</div><div class="i-h">Who needs to review this now?</div><div class="i-p">Axion routes each propagated change to the right credit, ABF, Athene, ACS, legal, risk, or portfolio manager with the evidence package attached.</div></div>
-    </div>
-  </div>
-</section>
 
 <section class="pane" id="pane-nextsteps">
   <div class="slide">
